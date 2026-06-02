@@ -2,12 +2,16 @@
     "pokemon": [
         {
             "name": "Flamon",
-            "element": "Fire",
+            "id": 1,
+            "type": "Fire",
+            "strength": "fire",
             "weakness": "Water",
             "stats": {
                 "hp": 10,
                 "attack": 15,
                 "defense": 5,
+                "special-attack" : 15,
+                "special-defense" : 5,
                 "stamina": 10
             },
             "moves": ["Ember", "Fire", "Inferno"]
