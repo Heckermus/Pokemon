@@ -1,4 +1,1 @@
-public enum Type
-{
-
-}
+public enum Type { }

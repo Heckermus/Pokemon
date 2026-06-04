@@ -8,6 +8,4 @@ public class Pokemon
     public String name;
     public String gender;
     public int id;
-
-
 }
