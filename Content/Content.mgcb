@@ -13,6 +13,16 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin data/pokemon.json
+/importer:
+/processor:
+/build:data/pokemon.json
+
+#begin data/types.json
+/importer:
+/processor:
+/build:data/types.json
+
 #begin font/6x8.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
