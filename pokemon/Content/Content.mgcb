@@ -13,6 +13,12 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin data/pokemon.json
+/copy:data/pokemon.json
+
+#begin data/types.json
+/copy:data/types.json
+
 #begin images/player.png
 /importer:TextureImporter
 /processor:TextureProcessor

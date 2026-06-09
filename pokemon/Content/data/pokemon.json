@@ -1,0 +1,74 @@
+{
+    "pokemon": [
+        {
+            "name": "Flamon",
+            "id": 1,
+            "type": "Fire",
+            "stats": {
+                "hp": 15,
+                "attack": 1.1,
+                "defense": 0.9,
+                "special-attack" : 1.1,
+                "special-defense" : 0.8,
+                "stamina": 30
+            },
+            "attacks": ["Ember", "Fire", "Inferno"]
+        },
+        {
+            "name": "Aquon",
+            "id": 2,
+            "type": "Water",
+            "stats": {
+                "hp": 15,
+                "attack": 1,
+                "defense": 1.1,
+                "special-attack" : 1,
+                "special-defense" : 1,
+                "stamina": 30
+            },
+            "attacks": ["Bubble", "Wave", "Tsunami"]
+        },
+        {
+            "name": "Earthon",
+            "id": 3,
+            "type": "Plant",
+            "stats": {
+                "hp": 20,
+                "attack": 0.9,
+                "defense": 1.2,
+                "special-attack" : 0.9,
+                "special-defense" : 1.2,
+                "stamina": 30
+            },
+            "attacks": ["Grass", "Bush", "Tree"]
+        },
+        {
+            "name": "Airon",
+            "id": 4,
+            "type": "Air",
+            "stats": {
+                "hp": 18,
+                "attack": 0.8,
+                "defense": 1.3,
+                "special-attack" : 0.9,
+                "special-defense" : 1,
+                "stamina": 30
+            },
+            "attacks": ["Breeze", "Wind", "Storm"]
+        },
+        {
+            "name": "Electron",
+            "id": 5,
+            "type": "Electric",
+            "stats": {
+                "hp": 20,
+                "attack": 1.2,
+                "defense": 1,
+                "special-attack" : 1.1,
+                "special-defense" : 0.7,
+                "stamina": 30
+            },
+            "attacks": ["Power", "Lightning", "Thunderstorm"]
+        }
+    ]
+}
