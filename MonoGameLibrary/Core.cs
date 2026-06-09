@@ -40,8 +40,8 @@ public class Core : Game
     /// <param name="title">The title to display in the title bar of the game window.</param>
     /// <param name="width">The initial width, in pixels, of the game window.</param>
     /// <param name="height">The initial height, in pixels, of the game window.</param>
-    /// <param name="fullScreen">Indicates if the game should start in fullscreen mode.</param>
-    public Core(string title, int width, int height, bool fullScreen)
+    /// <param name="fullscreen">Indicates if the game should start in fullscreen mode.</param>
+    public Core(string title, int width, int height, bool fullscreen)
     {
         // Ensure that multiple cores are not created.
         if (s_instance != null)
@@ -58,13 +58,16 @@ public class Core : Game
         // Set the graphics defaults.
         Graphics.PreferredBackBufferWidth = width;
         Graphics.PreferredBackBufferHeight = height;
-        Graphics.IsFullScreen = fullScreen;
+        Graphics.IsFullScreen = fullscreen;
+
 
         // Apply the graphic presentation changes.
         Graphics.ApplyChanges();
 
         // Set the window title.
         Window.Title = title;
+        
+
 
         // Set the core's content manager to a reference of the base Game's
         // content manager.

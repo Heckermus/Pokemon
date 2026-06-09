@@ -8,9 +8,11 @@ namespace pokemon;
 public class Game1 : Core
 {
     private Texture2D _logo;
+    private SpriteFont _dogica;
+
 
     public Game1()
-        : base("Dungeon Slime", 320, 180, false) { }
+        : base("Pokemon", 1920, 1080, true) { }
 
     protected override void Initialize()
     {
@@ -19,7 +21,7 @@ public class Game1 : Core
         base.Initialize();
     }
 
-    protected override void LoadContent()
+    protected override void LoadContent() 
     {
         _logo = Content.Load<Texture2D>("images/player");
 
@@ -44,8 +46,12 @@ public class Game1 : Core
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
         SpriteBatch.Begin();
-        SpriteBatch.Draw(_logo, Vector2.Zero, Color.White);
+        SpriteBatch.Draw(_logo, new Vector2 (1700, 100), Color.White);
+        _dogica = Content.Load<SpriteFont>("dogica");
+        
+
         SpriteBatch.End();
+        
 
         base.Draw(gameTime);
     }
