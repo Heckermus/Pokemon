@@ -8,8 +8,8 @@ namespace pokemon;
 
 public class Game1 : Core
 {
-    private TextureRegion _grass;
-    private TextureRegion _stone;
+    private Sprite _grass;
+    private Sprite _stone;
 
     public Game1()
         : base("Pokemon", 1920, 1080, true) { }
@@ -26,8 +26,8 @@ public class Game1 : Core
         Texture2D atlasTexture = Content.Load<Texture2D>("images/atlas");
         TextureAtlas atlas = TextureAtlas.FromFile(Content, "images/atlas-definition.xml");
 
-        _grass = atlas.GetRegion("grass");
-        _stone = atlas.GetRegion("stone");
+        _grass = atlas.CreateSprite("grass");
+        _stone = atlas.CreateSprite("stone");
 
         base.LoadContent();
     }
@@ -50,26 +50,8 @@ public class Game1 : Core
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
         SpriteBatch.Begin();
-        _grass.Draw(
-            SpriteBatch,
-            Vector2.Zero,
-            Color.White,
-            0.0f,
-            Vector2.One,
-            1.0f,
-            SpriteEffects.None,
-            0.0f
-        );
-        _stone.Draw(
-            SpriteBatch,
-            new Vector2(32, 32),
-            Color.White,
-            0.0f,
-            Vector2.One,
-            1.0f,
-            SpriteEffects.None,
-            0.0f
-        );
+        _grass.Draw(SpriteBatch, Vector2.Zero);
+        _stone.Draw(SpriteBatch, new Vector2(16, 0));
 
         SpriteBatch.End();
 

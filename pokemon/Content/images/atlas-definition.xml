@@ -2,7 +2,7 @@
 <TextureAtlas>
     <Texture>images/atlas</Texture>
     <Regions>
-        <Region name="grass" x="0" y="0" width="8" height="8" />
-        <Region name="stone" x="8" y="0" width="16" height="8" />
+        <Region name="grass" x="0" y="0" width="16" height="16" />
+        <Region name="stone" x="16" y="0" width="16" height="16" />
     </Regions>
 </TextureAtlas>
