@@ -7,9 +7,14 @@ namespace pokemon;
 
 public class Game1 : Core
 {
-    private Texture2D _logo;
+
+
     private SpriteFont _dogica;
 
+
+    private GameObject _logo;
+    private SpriteBatch _spritebatch;
+    private GraphicsDevice _graphicsDevice;
 
     public Game1()
         : base("Pokemon", 1920, 1080, true) { }
@@ -18,14 +23,21 @@ public class Game1 : Core
     {
         // TODO: Add your initialization logic here
 
-        base.Initialize();
+        base.Initialize();   
     }
 
     protected override void LoadContent() 
     {
-        _logo = Content.Load<Texture2D>("images/player");
-
         base.LoadContent();
+
+        _spritebatch = new SpriteBatch(GraphicsDevice);
+
+        
+        
+        _dogica = Content.Load<SpriteFont>("fonts/dogica");
+        _logo = new GameObject(Content.Load<Texture2D>("images/player"), new Vector2 (0, 0));
+
+        
     }
 
     protected override void Update(GameTime gameTime)
@@ -36,21 +48,19 @@ public class Game1 : Core
         )
             Exit();
 
-        // TODO: Add your update logic here
-
+        _logo.ChangePosition(1, 0);
         base.Update(gameTime);
+    
     }
 
     protected override void Draw(GameTime gameTime)
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
-        SpriteBatch.Begin();
-        SpriteBatch.Draw(_logo, new Vector2 (1700, 100), Color.White);
-        _dogica = Content.Load<SpriteFont>("dogica");
-        
-
-        SpriteBatch.End();
+        _spritebatch.Begin();
+        _logo.Draw(_spritebatch);
+        _spritebatch.DrawString(_dogica, "Der Fo", new Vector2 (10, 900), Color.White);
+        _spritebatch.End();
         
 
         base.Draw(gameTime);
