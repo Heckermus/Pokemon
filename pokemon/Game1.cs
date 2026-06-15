@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGameLibrary;
+using MonoGameLibrary.Graphics;
 
 namespace pokemon;
 
@@ -24,6 +25,7 @@ public class Game1 : Core
     protected override void LoadContent() 
     {
         _logo = Content.Load<Texture2D>("images/player");
+        TextureAtlas atlas = TextureAtlas.FromFile(Content, "images/atlas-definition.xml");
 
         base.LoadContent();
     }
