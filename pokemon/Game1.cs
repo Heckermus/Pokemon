@@ -8,9 +8,8 @@ namespace pokemon;
 
 public class Game1 : Core
 {
-    private Texture2D _logo;
-    private SpriteFont _dogica;
-
+    private TextureRegion _grass;
+    private TextureRegion _stone;
 
     public Game1()
         : base("Pokemon", 1920, 1080, true) { }
@@ -22,10 +21,13 @@ public class Game1 : Core
         base.Initialize();
     }
 
-    protected override void LoadContent() 
+    protected override void LoadContent()
     {
-        _logo = Content.Load<Texture2D>("images/player");
+        Texture2D atlasTexture = Content.Load<Texture2D>("images/atlas");
         TextureAtlas atlas = TextureAtlas.FromFile(Content, "images/atlas-definition.xml");
+
+        _grass = atlas.GetRegion("grass");
+        _stone = atlas.GetRegion("stone");
 
         base.LoadContent();
     }
@@ -48,12 +50,28 @@ public class Game1 : Core
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
         SpriteBatch.Begin();
-        SpriteBatch.Draw(_logo, new Vector2 (1700, 100), Color.White);
-        _dogica = Content.Load<SpriteFont>("dogica");
-        
+        _grass.Draw(
+            SpriteBatch,
+            Vector2.Zero,
+            Color.White,
+            0.0f,
+            Vector2.One,
+            1.0f,
+            SpriteEffects.None,
+            0.0f
+        );
+        _stone.Draw(
+            SpriteBatch,
+            new Vector2(32, 32),
+            Color.White,
+            0.0f,
+            Vector2.One,
+            1.0f,
+            SpriteEffects.None,
+            0.0f
+        );
 
         SpriteBatch.End();
-        
 
         base.Draw(gameTime);
     }

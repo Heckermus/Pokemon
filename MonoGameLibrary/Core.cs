@@ -60,14 +60,11 @@ public class Core : Game
         Graphics.PreferredBackBufferHeight = height;
         Graphics.IsFullScreen = fullscreen;
 
-
         // Apply the graphic presentation changes.
         Graphics.ApplyChanges();
 
         // Set the window title.
         Window.Title = title;
-        
-
 
         // Set the core's content manager to a reference of the base Game's
         // content manager.
