@@ -1,10 +1,11 @@
+using Microsoft.VisualBasic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 public class GameObject
 {
-    private Texture2D _texture { get; set; }
-    private Vector2 _position { get; set; }
+    public Texture2D _texture { get; set; }
+    public Vector2 _position { get; set; }
 
     public GameObject(Texture2D Texture, Vector2 startPosition)
     {
