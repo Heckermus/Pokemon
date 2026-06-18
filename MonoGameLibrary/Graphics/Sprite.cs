@@ -32,7 +32,7 @@ public class Sprite
     /// <remarks>
     /// Default value is Vector2.One
     /// </remarks>
-    public Vector2 Scale { get; set; } = new Vector2(4, 4);
+    public Vector2 Scale { get; set; } = Vector2.One;
 
     /// <summary>
     /// Gets or Sets the xy-coordinate origin point, relative to the top-left corner, of this sprite.

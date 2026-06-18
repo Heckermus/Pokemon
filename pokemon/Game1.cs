@@ -12,26 +12,25 @@ public class Game1 : Core
 {
     private AnimatedSprite _player;
     private Vector2 _playerPosition;
-    private Vector2 SCALE = new Vector2(4, 4);
 
-    private const float MOVEMENT_SPEED = 5.0f;
+    private Tilemap _tilemap;
+
+    private const float MOVEMENT_SPEED = 1.0f;
 
     public Game1()
-        : base("Pokemon", 1920, 1080, true) { }
+        : base("Pokemon", 1280, 720, false, virtualWidth: 256, virtualHeight: 144) { }
 
     protected override void Initialize()
     {
-        // TODO: Add your initialization logic here
-
         base.Initialize();
     }
 
     protected override void LoadContent()
     {
-        Texture2D atlasTexture = Content.Load<Texture2D>("images/atlas");
         TextureAtlas atlas = TextureAtlas.FromFile(Content, "images/atlas-definition.xml");
-
         _player = atlas.CreateAnimatedSprite("playerIdleDown");
+
+        _tilemap = Tilemap.FromFile(Content, "images/tilemap-definition.xml");
 
         base.LoadContent();
     }
@@ -45,6 +44,7 @@ public class Game1 : Core
             Exit();
 
         CheckKeyboardInput();
+
         _player.Update(gameTime);
 
         base.Update(gameTime);
@@ -84,7 +84,10 @@ public class Game1 : Core
     {
         GraphicsDevice.Clear(Color.Black);
 
-        SpriteBatch.Begin(samplerState: SamplerState.PointClamp);
+        SpriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: ScaleMatrix);
+
+        _tilemap.Draw(SpriteBatch);
+
         _player.Draw(SpriteBatch, _playerPosition);
 
         SpriteBatch.End();
