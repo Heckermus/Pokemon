@@ -10,9 +10,9 @@ namespace pokemon;
 
 public class Game1 : Core
 {
-    private Sprite _grass;
-    private Vector2 _grassPosition;
-    private Sprite _stone;
+    private AnimatedSprite _player;
+    private Vector2 _playerPosition;
+    private Vector2 SCALE = new Vector2(4, 4);
 
     private const float MOVEMENT_SPEED = 5.0f;
 
@@ -31,8 +31,7 @@ public class Game1 : Core
         Texture2D atlasTexture = Content.Load<Texture2D>("images/atlas");
         TextureAtlas atlas = TextureAtlas.FromFile(Content, "images/atlas-definition.xml");
 
-        _grass = atlas.CreateSprite("grass");
-        _stone = atlas.CreateSprite("stone");
+        _player = atlas.CreateAnimatedSprite("playerIdleDown");
 
         base.LoadContent();
     }
@@ -46,6 +45,7 @@ public class Game1 : Core
             Exit();
 
         CheckKeyboardInput();
+        _player.Update(gameTime);
 
         base.Update(gameTime);
     }
@@ -58,35 +58,34 @@ public class Game1 : Core
         // If the W or Up keys are down, move the slime up on the screen.
         if (Input.Keyboard.IsKeyDown(Keys.W) || Input.Keyboard.IsKeyDown(Keys.Up))
         {
-            _grassPosition.Y -= speed;
+            _playerPosition.Y -= speed;
         }
 
         // if the S or Down keys are down, move the slime down on the screen.
         if (Input.Keyboard.IsKeyDown(Keys.S) || Input.Keyboard.IsKeyDown(Keys.Down))
         {
-            _grassPosition.Y += speed;
+            _playerPosition.Y += speed;
         }
 
         // If the A or Left keys are down, move the slime left on the screen.
         if (Input.Keyboard.IsKeyDown(Keys.A) || Input.Keyboard.IsKeyDown(Keys.Left))
         {
-            _grassPosition.X -= speed;
+            _playerPosition.X -= speed;
         }
 
         // If the D or Right keys are down, move the slime right on the screen.
         if (Input.Keyboard.IsKeyDown(Keys.D) || Input.Keyboard.IsKeyDown(Keys.Right))
         {
-            _grassPosition.X += speed;
+            _playerPosition.X += speed;
         }
     }
 
     protected override void Draw(GameTime gameTime)
     {
-        GraphicsDevice.Clear(Color.CornflowerBlue);
+        GraphicsDevice.Clear(Color.Black);
 
-        SpriteBatch.Begin();
-        _grass.Draw(SpriteBatch, _grassPosition);
-        _stone.Draw(SpriteBatch, new Vector2(16, 0));
+        SpriteBatch.Begin(samplerState: SamplerState.PointClamp);
+        _player.Draw(SpriteBatch, _playerPosition);
 
         SpriteBatch.End();
 
