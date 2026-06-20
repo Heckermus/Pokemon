@@ -56,7 +56,14 @@ public class Core : Game
     /// <param name="width">The initial width, in pixels, of the game window.</param>
     /// <param name="height">The initial height, in pixels, of the game window.</param>
     /// <param name="fullscreen">Indicates if the game should start in fullscreen mode.</param>
-    public Core(string title, int width, int height, bool fullscreen, int virtualWidth = 0, int virtualHeight = 0)
+    public Core(
+        string title,
+        int width,
+        int height,
+        bool fullscreen,
+        int virtualWidth = 0,
+        int virtualHeight = 0
+    )
     {
         // Ensure that multiple cores are not created.
         if (s_instance != null)
@@ -119,7 +126,10 @@ public class Core : Game
 
         // Set the graphics defaults.
         Graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-        Graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+        Graphics.PreferredBackBufferHeight = GraphicsAdapter
+            .DefaultAdapter
+            .CurrentDisplayMode
+            .Height;
         Graphics.IsFullScreen = fullscreen;
 
         // Apply the graphic presentation changes.
@@ -144,16 +154,16 @@ public class Core : Game
 
     protected override void Initialize()
     {
-    base.Initialize();
+        base.Initialize();
 
-    GraphicsDevice = base.GraphicsDevice;
-    SpriteBatch = new SpriteBatch(GraphicsDevice);
-    Input = new InputManager();
+        GraphicsDevice = base.GraphicsDevice;
+        SpriteBatch = new SpriteBatch(GraphicsDevice);
+        Input = new InputManager();
 
-    // Compute scale matrix
-    float scaleX = (float)GraphicsDevice.Viewport.Width / VirtualWidth;
-    float scaleY = (float)GraphicsDevice.Viewport.Height / VirtualHeight;
-    ScaleMatrix = Matrix.CreateScale(scaleX, scaleY, 1f);
+        // Compute scale matrix
+        float scaleX = (float)GraphicsDevice.Viewport.Width / VirtualWidth;
+        float scaleY = (float)GraphicsDevice.Viewport.Height / VirtualHeight;
+        ScaleMatrix = Matrix.CreateScale(scaleX, scaleY, 1f);
     }
 
     protected override void Update(GameTime gameTime)
