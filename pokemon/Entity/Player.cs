@@ -31,11 +31,10 @@ public class Player
             [(Direction.Up, false)] = atlas.CreateAnimatedSprite("playerIdleUp"),
             [(Direction.Left, false)] = atlas.CreateAnimatedSprite("playerIdleLeft"),
             [(Direction.Right, false)] = atlas.CreateAnimatedSprite("playerIdleRight"),
-            [(Direction.Down, true)] = atlas.CreateAnimatedSprite("playerIdleDown"),
-            [(Direction.Up, true)] = atlas.CreateAnimatedSprite("playerIdleUp"),
-            [(Direction.Left, true)] = atlas.CreateAnimatedSprite("playerIdleLeft"),
-            [(Direction.Right, true)] = atlas.CreateAnimatedSprite("playerIdleRight"),
-            //Fixme: Add Walking Animations
+            [(Direction.Down, true)] = atlas.CreateAnimatedSprite("playerWalkDown"),
+            [(Direction.Up, true)] = atlas.CreateAnimatedSprite("playerWalkUp"),
+            [(Direction.Left, true)] = atlas.CreateAnimatedSprite("playerWalkLeft"),
+            [(Direction.Right, true)] = atlas.CreateAnimatedSprite("playerWalkRight"),
         };
 
         _currentAnimation = _animations[(_facing, false)];
