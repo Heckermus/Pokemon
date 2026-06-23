@@ -2,7 +2,97 @@
 <TextureAtlas>
     <Texture>images/atlas</Texture>
     <Regions>
-        <Region name="slime" x="0" y="0" width="20" height="20" />
-        <Region name="bat" x="20" y="0" width="20" height="20" />
+        <Region name="playerIdleUp-1" x="0" y="0" width="16" height="16" />
+        <Region name="playerIdleDown-1" x="16" y="0" width="16" height="16" />
+        <Region name="playerIdleLeft-1" x="32" y="0" width="16" height="16" />
+        <Region name="playerIdleRight-1" x="48" y="0" width="16" height="16" />
+        <Region name="playerIdleUp-2" x="64" y="0" width="16" height="16" />
+        <Region name="playerIdleDown-2" x="80" y="0" width="16" height="16" />
+        <Region name="playerIdleLeft-2" x="96" y="0" width="16" height="16" />
+        <Region name="playerIdleRight-2" x="112" y="0" width="16" height="16" />
+        <Region name="playerIdleUp-3" x="0" y="16" width="16" height="16" />
+        <Region name="playerIdleDown-3" x="16" y="16" width="16" height="16" />
+        <Region name="playerIdleLeft-3" x="32" y="16" width="16" height="16" />
+        <Region name="playerIdleRight-3" x="48" y="16" width="16" height="16" />
+        <Region name="playerIdleUp-4" x="64" y="16" width="16" height="16" />
+        <Region name="playerIdleDown-4" x="80" y="16" width="16" height="16" />
+        <Region name="playerIdleLeft-4" x="96" y="16" width="16" height="16" />
+        <Region name="playerIdleRight-4" x="112" y="16" width="16" height="16" />
+        <Region name="playerWalkUp-1" x="0" y="32" width="16" height="16" />
+        <Region name="playerWalkDown-1" x="16" y="32" width="16" height="16" />
+        <Region name="playerWalkLeft-1" x="32" y="32" width="16" height="16" />
+        <Region name="playerWalkRight-1" x="48" y="32" width="16" height="16" />
+        <Region name="playerWalkUp-2" x="64" y="32" width="16" height="16" />
+        <Region name="playerWalkDown-2" x="80" y="32" width="16" height="16" />
+        <Region name="playerWalkLeft-2" x="96" y="32" width="16" height="16" />
+        <Region name="playerWalkRight-2" x="112" y="32" width="16" height="16" />
+        <Region name="playerWalkUp-3" x="0" y="48" width="16" height="16" />
+        <Region name="playerWalkDown-3" x="16" y="48" width="16" height="16" />
+        <Region name="playerWalkLeft-3" x="32" y="48" width="16" height="16" />
+        <Region name="playerWalkRight-3" x="48" y="48" width="16" height="16" />
+        <Region name="playerWalkUp-4" x="64" y="48" width="16" height="16" />
+        <Region name="playerWalkDown-4" x="80" y="48" width="16" height="16" />
+        <Region name="playerWalkLeft-4" x="96" y="48" width="16" height="16" />
+        <Region name="playerWalkRight-4" x="112" y="48" width="16" height="16" />
+
+        <Region name="floorLight" x="0" y="64" width="16" height="16" />
+        <Region name="floorDark" x="16" y="64" width="16" height="16" />
+        <Region name="grass" x="32" y="64" width="16" height="16" />
+        <Region name="grassAlternate" x="48" y="64" width="16" height="16" />
+        <Region name="flower" x="64" y="64" width="16" height="16" />
+        <Region name="stone" x="80" y="64" width="16" height="16" />
+        <Region name="floorLightRocky" x="96" y="64" width="16" height="16" />
+        <Region name="floorDarkRocky" x="112" y="64" width="16" height="16" />
     </Regions>
+    <Animations>
+        <Animation name="playerIdleUp" delay="500">
+            <Frame region="playerIdleUp-1" />
+            <Frame region="playerIdleUp-2" />
+            <Frame region="playerIdleUp-3" />
+            <Frame region="playerIdleUp-4" />
+        </Animation>
+        <Animation name="playerIdleDown" delay="500">
+            <Frame region="playerIdleDown-1" />
+            <Frame region="playerIdleDown-2" />
+            <Frame region="playerIdleDown-3" />
+            <Frame region="playerIdleDown-4" />
+        </Animation>
+        <Animation name="playerIdleLeft" delay="500">
+            <Frame region="playerIdleLeft-1" />
+            <Frame region="playerIdleLeft-2" />
+            <Frame region="playerIdleLeft-3" />
+            <Frame region="playerIdleLeft-4" />
+        </Animation>
+        <Animation name="playerIdleRight" delay="500">
+            <Frame region="playerIdleRight-1" />
+            <Frame region="playerIdleRight-2" />
+            <Frame region="playerIdleRight-3" />
+            <Frame region="playerIdleRight-4" />
+        </Animation>
+
+        <Animation name="playerWalkUp" delay="250">
+            <Frame region="playerWalkUp-1" />
+            <Frame region="playerWalkUp-2" />
+            <Frame region="playerWalkUp-3" />
+            <Frame region="playerWalkUp-4" />
+        </Animation>
+        <Animation name="playerWalkDown" delay="250">
+            <Frame region="playerWalkDown-1" />
+            <Frame region="playerWalkDown-2" />
+            <Frame region="playerWalkDown-3" />
+            <Frame region="playerWalkDown-4" />
+        </Animation>
+        <Animation name="playerWalkLeft" delay="250">
+            <Frame region="playerWalkLeft-1" />
+            <Frame region="playerWalkLeft-2" />
+            <Frame region="playerWalkLeft-3" />
+            <Frame region="playerWalkLeft-4" />
+        </Animation>
+        <Animation name="playerWalkRight" delay="250">
+            <Frame region="playerWalkRight-1" />
+            <Frame region="playerWalkRight-2" />
+            <Frame region="playerWalkRight-3" />
+            <Frame region="playerWalkRight-4" />
+        </Animation>
+    </Animations>
 </TextureAtlas>
