@@ -206,7 +206,7 @@
   {
     "type": "Fighting",
     "effective": ["Normal", "Ice", "Rock"],
-    "weakness": ["Flying", "Psychic"],
+    "weakness": ["Flying", "Psycho"],
     "resistant": ["Bug", "Rock"],
     "immune": [],
     "attacks": [
@@ -240,7 +240,7 @@
   {
     "type": "Poison",
     "effective": ["Grass", "Bug"],
-    "weakness": ["Ground", "Psychic", "Bug"],
+    "weakness": ["Ground", "Psycho", "Bug"],
     "resistant": ["Grass", "Poison"],
     "immune": [],
     "attacks": [
@@ -343,7 +343,7 @@
     "type": "Psycho",
     "effective": ["Fighting", "Poison"],
     "weakness": ["Bug"],
-    "resistant": ["Psychic"],
+    "resistant": ["Psycho"],
     "immune": ["Ghost"],
     "attacks": [
       {
@@ -375,7 +375,7 @@
   
   {
     "type": "Bug",
-    "effective": ["Grass", "Poison", "Psychic"],
+    "effective": ["Grass", "Poison", "Psycho"],
     "weakness": ["Fire", "Poison", "Flying", "Rock"],
     "resistant": ["Grass", "Fighting", "Ground"],
     "immune": [],

@@ -54,12 +54,12 @@ public class StatsEntry
     public int stamina { get; set; }
 }
 
-public class PokemonConstructor
+public static class PokemonConstructor
 {
-    private PokemonJson pokemonData;
-    private List<TypeEntry> typeData;
+    private static PokemonJson pokemonData;
+    public static List<TypeEntry> typeData;
 
-    public PokemonConstructor()
+    static PokemonConstructor()
     {
         string pokejson = File.ReadAllText("Content/data/pokemon.json");
         pokemonData = JsonSerializer.Deserialize<PokemonJson>(pokejson);
@@ -68,7 +68,9 @@ public class PokemonConstructor
         typeData = JsonSerializer.Deserialize<List<TypeEntry>>(typesjson);
     }
 
-    public Pokemon create(int _id)
+    
+
+    public static Pokemon create(int _id)
     {
         PokemonEntry entry = pokemonData.pokemon.FirstOrDefault(p => p.id == _id);
         if (entry == null) return null;
@@ -95,6 +97,35 @@ public class PokemonConstructor
             attack1,
             attack2,
             attack3
+            
         );
+    }
+
+    public static List<string> getEffective(string type)
+    {
+        TypeEntry typeEntry = typeData.FirstOrDefault(t => t.type == type);
+        if (typeEntry == null) return null;
+        return typeEntry.effective;
+    }
+
+    public static List<string> getWeakness(string type)
+    {
+        TypeEntry typeEntry = typeData.FirstOrDefault(t => t.type == type);
+        if (typeEntry == null) return null;
+        return typeEntry.weakness;
+    }
+
+    public static List<string> getResistant(string type)
+    {
+        TypeEntry typeEntry = typeData.FirstOrDefault(t => t.type == type);
+        if (typeEntry == null) return null;
+        return typeEntry.resistant;
+    }
+
+    public static List<string> getImmune(string type)
+    {
+        TypeEntry typeEntry = typeData.FirstOrDefault(t => t.type == type);
+        if (typeEntry == null) return null;
+        return typeEntry.immune;
     }
 }
