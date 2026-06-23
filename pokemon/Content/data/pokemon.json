@@ -45,7 +45,7 @@
         {
             "name": "Airon",
             "id": 4,
-            "type": "Air",
+            "type": "Flying",
             "stats": {
                 "hp": 18,
                 "attack": 0.8,

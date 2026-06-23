@@ -1,3 +1,4 @@
+﻿using System;
 ﻿using Gum.Forms;
 using Gum.Forms.Controls;
 using Gum.Forms.Input;
@@ -12,6 +13,13 @@ namespace pokemon;
 public class Game1 : Core
 {
     //private SpriteFont _font;
+
+    private SpriteFont _dogica;
+    private Pokemon diddy;
+    private GameObject _logo;
+    private SpriteBatch _spritebatch;
+    private GraphicsDevice _graphicsDevice;
+    private Battle b;
 
     public Game1()
         : base("Pokemon", 1280, 720, false, virtualWidth: 256, virtualHeight: 144) { }
@@ -30,11 +38,21 @@ public class Game1 : Core
         //_font = Content.Load<SpriteFont>("fonts/6x8");
 
         base.LoadContent();
+
+        _spritebatch = new SpriteBatch(GraphicsDevice);
+        diddy = PokemonConstructor.create(2);
+        Console.WriteLine(diddy.name);
+        
+        _dogica = Content.Load<SpriteFont>("fonts/dogica");
+        _logo = new GameObject(Content.Load<Texture2D>("images/player"), new Vector2 (0, 0));
+        b = new Battle(diddy, PokemonConstructor.create(4));
+        
     }
 
     protected override void Update(GameTime gameTime)
     {
         base.Update(gameTime);
+    
     }
 
     private void InitializeGum()
