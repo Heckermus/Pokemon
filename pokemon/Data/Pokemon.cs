@@ -10,7 +10,7 @@ public class Pokemon
     public double specialAttackMult { get; }
     public double specialDefenseMult { get; }
     public int maxStamina { get; }
-    public Attack attack1 { get; } //FIXME: Sollte wahrscheinlich ein Array sein
+    public Attack attack1 { get; } //FIXME: type specific scheiß auch in pokemon speichern sonst machen wir uns das leben schwer
     public Attack attack2 { get; }
     public Attack attack3 { get; }
 
