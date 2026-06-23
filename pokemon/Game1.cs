@@ -11,7 +11,7 @@ namespace pokemon;
 
 public class Game1 : Core
 {
-    private SpriteFont _font;
+    //private SpriteFont _font;
 
     public Game1()
         : base("Pokemon", 1280, 720, false, virtualWidth: 256, virtualHeight: 144) { }
@@ -27,7 +27,7 @@ public class Game1 : Core
 
     protected override void LoadContent()
     {
-        _font = Content.Load<SpriteFont>("fonts/6x8");
+        //_font = Content.Load<SpriteFont>("fonts/6x8");
 
         base.LoadContent();
     }

@@ -15,11 +15,8 @@ public class GameScene : Scene
 
     public override void Initialize()
     {
-        // LoadContent is called during base.Initialize().
         base.Initialize();
 
-        // While on the title screen, we can enable exit on escape so the player
-        // can close the game by pressing the escape key.
         Core.ExitOnEscape = true;
     }
 
