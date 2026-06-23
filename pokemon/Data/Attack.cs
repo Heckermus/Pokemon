@@ -1,3 +1,5 @@
+namespace pokemon.Data;
+
 public class Attack
 {
     public string name { get; }
