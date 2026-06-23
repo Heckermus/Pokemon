@@ -2,9 +2,13 @@
   {
     "type": "Normal",
     "effective": [],
-    "weakness": ["Fighting"],
+    "weakness": [
+      "Fighting"
+    ],
     "resistant": [],
-    "immune": ["Ghost"],
+    "immune": [
+      "Ghost"
+    ],
     "attacks": [
       {
         "name": "Tackle",
@@ -32,12 +36,23 @@
       }
     ]
   },
-  
   {
     "type": "Fire",
-    "effective": ["Grass", "Ice", "Bug"],
-    "weakness": ["Water", "Ground", "Rock"],
-    "resistant": ["Fire", "Grass", "Bug"],
+    "effective": [
+      "Grass",
+      "Ice",
+      "Bug"
+    ],
+    "weakness": [
+      "Water",
+      "Ground",
+      "Rock"
+    ],
+    "resistant": [
+      "Fire",
+      "Grass",
+      "Bug"
+    ],
     "immune": [],
     "attacks": [
       {
@@ -66,12 +81,22 @@
       }
     ]
   },
-  
   {
     "type": "Water",
-    "effective": ["Fire", "Ground", "Rock"],
-    "weakness": ["Electric", "Grass"],
-    "resistant": ["Fire", "Water", "Ice"],
+    "effective": [
+      "Fire",
+      "Ground",
+      "Rock"
+    ],
+    "weakness": [
+      "Electric",
+      "Grass"
+    ],
+    "resistant": [
+      "Fire",
+      "Water",
+      "Ice"
+    ],
     "immune": [],
     "attacks": [
       {
@@ -100,12 +125,19 @@
       }
     ]
   },
-  
   {
     "type": "Electric",
-    "effective": ["Water", "Flying"],
-    "weakness": ["Ground"],
-    "resistant": ["Electric", "Flying"],
+    "effective": [
+      "Water",
+      "Flying"
+    ],
+    "weakness": [
+      "Ground"
+    ],
+    "resistant": [
+      "Electric",
+      "Flying"
+    ],
     "immune": [],
     "attacks": [
       {
@@ -134,12 +166,26 @@
       }
     ]
   },
-  
   {
     "type": "Plant",
-    "effective": ["Water", "Ground", "Rock"],
-    "weakness": ["Fire", "Ice", "Poison", "Flying", "Bug"],
-    "resistant": ["Electric", "Water", "Grass", "Ground"],
+    "effective": [
+      "Water",
+      "Ground",
+      "Rock"
+    ],
+    "weakness": [
+      "Fire",
+      "Ice",
+      "Poison",
+      "Flying",
+      "Bug"
+    ],
+    "resistant": [
+      "Electric",
+      "Water",
+      "Grass",
+      "Ground"
+    ],
     "immune": [],
     "attacks": [
       {
@@ -168,12 +214,22 @@
       }
     ]
   },
-  
   {
     "type": "Ice",
-    "effective": ["Grass", "Ground", "Flying", "Dragon"],
-    "weakness": ["Fire", "Fighting", "Rock"],
-    "resistant": ["Ice"],
+    "effective": [
+      "Grass",
+      "Ground",
+      "Flying",
+      "Dragon"
+    ],
+    "weakness": [
+      "Fire",
+      "Fighting",
+      "Rock"
+    ],
+    "resistant": [
+      "Ice"
+    ],
     "immune": [],
     "attacks": [
       {
@@ -202,12 +258,21 @@
       }
     ]
   },
-  
   {
     "type": "Fighting",
-    "effective": ["Normal", "Ice", "Rock"],
-    "weakness": ["Flying", "Psycho"],
-    "resistant": ["Bug", "Rock"],
+    "effective": [
+      "Normal",
+      "Ice",
+      "Rock"
+    ],
+    "weakness": [
+      "Flying",
+      "Psycho"
+    ],
+    "resistant": [
+      "Bug",
+      "Rock"
+    ],
     "immune": [],
     "attacks": [
       {
@@ -236,12 +301,21 @@
       }
     ]
   },
-  
   {
     "type": "Poison",
-    "effective": ["Grass", "Bug"],
-    "weakness": ["Ground", "Psycho", "Bug"],
-    "resistant": ["Grass", "Poison"],
+    "effective": [
+      "Grass",
+      "Bug"
+    ],
+    "weakness": [
+      "Ground",
+      "Psycho",
+      "Bug"
+    ],
+    "resistant": [
+      "Grass",
+      "Poison"
+    ],
     "immune": [],
     "attacks": [
       {
@@ -270,13 +344,26 @@
       }
     ]
   },
-  
   {
     "type": "Ground",
-    "effective": ["Fire", "Electric", "Poison", "Rock"],
-    "weakness": ["Water", "Grass", "Ice"],
-    "resistant": ["Poison", "Rock"],
-    "immune": ["Electric"],
+    "effective": [
+      "Fire",
+      "Electric",
+      "Poison",
+      "Rock"
+    ],
+    "weakness": [
+      "Water",
+      "Grass",
+      "Ice"
+    ],
+    "resistant": [
+      "Poison",
+      "Rock"
+    ],
+    "immune": [
+      "Electric"
+    ],
     "attacks": [
       {
         "name": "Roll",
@@ -304,13 +391,26 @@
       }
     ]
   },
-  
   {
     "type": "Flying",
-    "effective": ["Grass", "Fighting", "Bug"],
-    "weakness": ["Electric", "Ice", "Rock"],
-    "resistant": ["Fighting", "Grass", "Bug"],
-    "immune": ["Ground"],
+    "effective": [
+      "Grass",
+      "Fighting",
+      "Bug"
+    ],
+    "weakness": [
+      "Electric",
+      "Ice",
+      "Rock"
+    ],
+    "resistant": [
+      "Fighting",
+      "Grass",
+      "Bug"
+    ],
+    "immune": [
+      "Ground"
+    ],
     "attacks": [
       {
         "name": "Breeze",
@@ -324,7 +424,7 @@
         "name": "Wind",
         "stats": {
           "damage": 8,
-          "ap":  3,
+          "ap": 3,
           "special": false
         }
       },
@@ -338,13 +438,21 @@
       }
     ]
   },
-  
   {
     "type": "Psycho",
-    "effective": ["Fighting", "Poison"],
-    "weakness": ["Bug"],
-    "resistant": ["Psycho"],
-    "immune": ["Ghost"],
+    "effective": [
+      "Fighting",
+      "Poison"
+    ],
+    "weakness": [
+      "Bug"
+    ],
+    "resistant": [
+      "Psycho"
+    ],
+    "immune": [
+      "Ghost"
+    ],
     "attacks": [
       {
         "name": "Scream",
@@ -358,7 +466,7 @@
         "name": "Dance",
         "stats": {
           "damage": 7,
-          "ap":  2,
+          "ap": 2,
           "special": true
         }
       },
@@ -366,18 +474,30 @@
         "name": "Scare",
         "stats": {
           "damage": 2,
-          "ap":  0,
+          "ap": 0,
           "special": true
         }
       }
     ]
   },
-  
   {
     "type": "Bug",
-    "effective": ["Grass", "Poison", "Psycho"],
-    "weakness": ["Fire", "Poison", "Flying", "Rock"],
-    "resistant": ["Grass", "Fighting", "Ground"],
+    "effective": [
+      "Grass",
+      "Poison",
+      "Psycho"
+    ],
+    "weakness": [
+      "Fire",
+      "Poison",
+      "Flying",
+      "Rock"
+    ],
+    "resistant": [
+      "Grass",
+      "Fighting",
+      "Ground"
+    ],
     "immune": [],
     "attacks": [
       {
@@ -392,7 +512,7 @@
         "name": "Bzzzz",
         "stats": {
           "damage": 7,
-          "ap":  2,
+          "ap": 2,
           "special": false
         }
       },
@@ -406,12 +526,26 @@
       }
     ]
   },
-  
   {
     "type": "Rock",
-    "effective": ["Fire", "Ice", "Flying", "Bug"],
-    "weakness": ["Water", "Grass", "Fighting", "Ground"],
-    "resistant": ["Normal", "Fire", "Poison", "Flying"],
+    "effective": [
+      "Fire",
+      "Ice",
+      "Flying",
+      "Bug"
+    ],
+    "weakness": [
+      "Water",
+      "Grass",
+      "Fighting",
+      "Ground"
+    ],
+    "resistant": [
+      "Normal",
+      "Fire",
+      "Poison",
+      "Flying"
+    ],
     "immune": [],
     "attacks": [
       {
@@ -426,7 +560,7 @@
         "name": "Spinning",
         "stats": {
           "damage": 4,
-          "ap":  1,
+          "ap": 1,
           "special": false
         }
       },
@@ -434,19 +568,28 @@
         "name": "Shatter",
         "stats": {
           "damage": 11,
-          "ap":  5,
+          "ap": 5,
           "special": true
         }
       }
     ]
   },
-  
   {
     "type": "Ghost",
-    "effective": ["Ghost"],
-    "weakness": ["Ghost"],
-    "resistant": ["Normal", "Poison"],
-    "immune": ["Normal", "Fighting"],
+    "effective": [
+      "Ghost"
+    ],
+    "weakness": [
+      "Ghost"
+    ],
+    "resistant": [
+      "Normal",
+      "Poison"
+    ],
+    "immune": [
+      "Normal",
+      "Fighting"
+    ],
     "attacks": [
       {
         "name": "Haunt",
@@ -460,7 +603,7 @@
         "name": "Conjuring",
         "stats": {
           "damage": 7,
-          "ap":  2,
+          "ap": 2,
           "special": true
         }
       },
@@ -468,18 +611,27 @@
         "name": "Laugh",
         "stats": {
           "damage": 2,
-          "ap":  0,
+          "ap": 0,
           "special": false
         }
       }
     ]
   },
-  
   {
     "type": "Dragon",
-    "effective": ["Dragon"],
-    "weakness": ["Ice", "Dragon"],
-    "resistant": ["Fire", "Water", "Electric", "Grass"],
+    "effective": [
+      "Dragon"
+    ],
+    "weakness": [
+      "Ice",
+      "Dragon"
+    ],
+    "resistant": [
+      "Fire",
+      "Water",
+      "Electric",
+      "Grass"
+    ],
     "immune": [],
     "attacks": [
       {
@@ -494,7 +646,7 @@
         "name": "Befog",
         "stats": {
           "damage": 4,
-          "ap":  2,
+          "ap": 2,
           "special": true
         }
       },
@@ -502,7 +654,7 @@
         "name": "Blast",
         "stats": {
           "damage": 11,
-          "ap":  9,
+          "ap": 9,
           "special": true
         }
       }

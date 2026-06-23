@@ -6,16 +6,13 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGameGum;
 using MonoGameLibrary;
+using pokemon.Data;
 using pokemon.Scenes;
 
 namespace pokemon;
 
 public class Game1 : Core
 {
-    private SpriteFont _font;
-    private Pokemon diddy;
-    private Battle b;
-
     public Game1()
         : base("Pokemon", 1280, 720, false, virtualWidth: 256, virtualHeight: 144) { }
 
@@ -31,12 +28,6 @@ public class Game1 : Core
     protected override void LoadContent()
     {
         base.LoadContent();
-
-        diddy = PokemonConstructor.create(2);
-        Console.WriteLine(diddy.name);
-
-        _font = Content.Load<SpriteFont>("fonts/6x8");
-        b = new Battle(diddy, PokemonConstructor.create(4));
     }
 
     protected override void Update(GameTime gameTime)
