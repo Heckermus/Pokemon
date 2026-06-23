@@ -19,14 +19,30 @@
 #begin data/types.json
 /copy:data/types.json
 
-#begin fonts/dogica.spritefont
+#begin fonts/6x8.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
-/build:fonts/dogica.spritefont
+/build:fonts/6x8.spritefont
 
-#begin images/player.png
+#begin fonts/6x8.ttf
+/copy:fonts/6x8.ttf
+
+#begin fonts/8x8.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:fonts/8x8.spritefont
+
+#begin fonts/8x8.ttf
+/copy:fonts/8x8.ttf
+
+#begin images/atlas-definition.xml
+/copy:images/atlas-definition.xml
+
+#begin images/atlas.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -36,5 +52,8 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:images/player.png
+/build:images/atlas.png
+
+#begin images/tilemap-definition.xml
+/copy:images/tilemap-definition.xml
 
