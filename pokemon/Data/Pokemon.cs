@@ -4,6 +4,8 @@ public class Pokemon
 {
     public string name { get; }
     public Type type { get; }
+
+    public string id { get; }
     public int maxHP { get; }
     public double attackMult { get; }
     public double defenseMult { get; }
@@ -17,6 +19,7 @@ public class Pokemon
     public Pokemon(
         string name,
         Type type,
+        string id,
         int maxHP,
         double attackMult,
         double defenseMult,
@@ -30,6 +33,7 @@ public class Pokemon
     {
         this.name = name;
         this.type = type;
+        this.id = id;
         this.maxHP = maxHP;
         this.attackMult = attackMult;
         this.defenseMult = defenseMult;

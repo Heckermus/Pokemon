@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using CsvHelper;
 
 namespace pokemon.Data;
 
@@ -15,9 +16,9 @@ public class TypeEntry
     public List<string> weakness { get; set; }
     public List<string> resistant { get; set; }
     public List<string> immune { get; set; }
-    public List<AttackEntry> attacks { get; set; }
 }
 
+// Hilfsklassen für pokemon.json
 public class AttackEntry
 {
     public string name { get; set; }
@@ -31,7 +32,6 @@ public class AttackStats
     public bool special { get; set; }
 }
 
-// Hilfsklassen für pokemon.json
 public class PokemonJson
 {
     public List<PokemonEntry> pokemon { get; set; }
@@ -40,8 +40,10 @@ public class PokemonJson
 public class PokemonEntry
 {
     public string name { get; set; }
+    public string id { get; set; }
     public string type { get; set; }
     public StatsEntry stats { get; set; }
+    public List<AttackEntry> attacks { get; set; }
 }
 
 public class StatsEntry
@@ -62,7 +64,7 @@ public static class PokemonRegistry
 {
     public static Dictionary<string, Pokemon> POKEMONS { get; } = new Dictionary<string, Pokemon>();
     private static PokemonJson pokemonData;
-    public static List<TypeEntry> typeData;
+    private static List<TypeEntry> typeData;
 
     static PokemonRegistry()
     {
@@ -89,27 +91,28 @@ public static class PokemonRegistry
             return null;
 
         Attack attack1 = new Attack(
-            typeEntry.attacks[0].name,
-            typeEntry.attacks[0].stats.damage,
-            typeEntry.attacks[0].stats.ap,
-            typeEntry.attacks[0].stats.special
+            entry.attacks[0].name,
+            entry.attacks[0].stats.damage,
+            entry.attacks[0].stats.ap,
+            entry.attacks[0].stats.special
         );
         Attack attack2 = new Attack(
-            typeEntry.attacks[1].name,
-            typeEntry.attacks[1].stats.damage,
-            typeEntry.attacks[1].stats.ap,
-            typeEntry.attacks[1].stats.special
+            entry.attacks[1].name,
+            entry.attacks[1].stats.damage,
+            entry.attacks[1].stats.ap,
+            entry.attacks[1].stats.special
         );
         Attack attack3 = new Attack(
-            typeEntry.attacks[2].name,
-            typeEntry.attacks[2].stats.damage,
-            typeEntry.attacks[2].stats.ap,
-            typeEntry.attacks[2].stats.special
+            entry.attacks[2].name,
+            entry.attacks[2].stats.damage,
+            entry.attacks[2].stats.ap,
+            entry.attacks[2].stats.special
         );
 
         return new Pokemon(
             entry.name,
             Enum.Parse<Type>(entry.type),
+            entry.id,
             entry.stats.hp,
             entry.stats.attack,
             entry.stats.defense,

@@ -1,27 +1,54 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MonoGameLibrary;
+using MonoGameLibrary.Graphics;
+using MonoGameLibrary.Scenes;
+using pokemon.Entity;
 
-public class Battle
+namespace pokemon.Scenes;
+
+public class Battle : Scene
 {
-    private Pokemon _yourPokemon;
-    private Pokemon _opponentsPokemon;
+    private PokemonInstance _yourPokemon;
+    private PokemonInstance _opponentsPokemon;
     private MouseState mouse = Mouse.GetState();
 
-    //private Button _attack1b = new Button(("images/player"), )
-
-    public Battle(Pokemon you, Pokemon opp)
+    public Battle(PokemonInstance yourPokemon, PokemonInstance opponentsPokemon)
     {
-        _yourPokemon = you;
-        _opponentsPokemon = opp;
+        this._yourPokemon = yourPokemon;
+        this._opponentsPokemon = opponentsPokemon;
     }
 
-    public void Draw(SpriteBatch sb, SpriteFont dg)
+    public override void Initialize()
     {
-        updateUI(sb, dg);
+        base.Initialize();
+
+        Core.ExitOnEscape = true;
     }
 
-    private void updateUI(SpriteBatch sb, SpriteFont dg)
+    public override void LoadContent()
+    {
+        TextureAtlas atlas = TextureAtlas.FromFile(Core.Content, "images/atlas-definition.xml");
+
+        base.LoadContent();
+    }
+
+    public override void Update(GameTime gameTime) { }
+
+    public override void Draw(GameTime gameTime)
+    {
+        Core.GraphicsDevice.Clear(Color.Black);
+
+        Core.SpriteBatch.Begin(
+            samplerState: SamplerState.PointClamp,
+            transformMatrix: Core.ScaleMatrix
+        );
+
+        Core.SpriteBatch.End();
+    }
+
+    /*private void updateUI(SpriteBatch sb, SpriteFont dg)
     {
         sb.Begin(samplerState: SamplerState.PointClamp);
         sb.DrawString(
@@ -136,5 +163,5 @@ public class Battle
             0f
         );
         sb.End();
-    }
+    }*/
 }
