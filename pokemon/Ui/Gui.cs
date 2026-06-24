@@ -1,20 +1,20 @@
 using System;
+using Gum.Forms.Controls;
+using Gum.GueDeriving;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGameGum;
-using Gum.Forms.Controls;
-using Gum.GueDeriving;
 using MonoGameLibrary;
+
+namespace pokemon.Ui;
 
 public class Gui
 {
     private Panel _gui;
-    public Gui()
-    {
-        
-    }
+
+    public Gui() { }
 
     private void CreateGui()
     {

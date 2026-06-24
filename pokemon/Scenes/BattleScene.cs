@@ -1,33 +1,59 @@
-using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MonoGameLibrary;
+using MonoGameLibrary.Graphics;
+using MonoGameLibrary.Scenes;
+using pokemon.Entity;
 
-public class Battle
+namespace pokemon.Scenes;
+
+public class Battle : Scene
 {
-    private Pokemon _you;
-    private Pokemon _opp;
+    private PokemonInstance _yourPokemon;
+    private PokemonInstance _opponentsPokemon;
     private MouseState mouse = Mouse.GetState();
 
-    //private Button _attack1b = new Button(("images/player"), )
-
-    public Battle(Pokemon you, Pokemon opp)
+    public Battle(PokemonInstance yourPokemon, PokemonInstance opponentsPokemon)
     {
-        _you = you;
-        _opp = opp;
+        this._yourPokemon = yourPokemon;
+        this._opponentsPokemon = opponentsPokemon;
     }
 
-    public void Draw(SpriteBatch sb, SpriteFont dg)
+    public override void Initialize()
     {
-        updateUI(sb, dg);
+        base.Initialize();
+
+        Core.ExitOnEscape = true;
     }
 
-    private void updateUI(SpriteBatch sb, SpriteFont dg)
+    public override void LoadContent()
+    {
+        TextureAtlas atlas = TextureAtlas.FromFile(Core.Content, "images/atlas-definition.xml");
+
+        base.LoadContent();
+    }
+
+    public override void Update(GameTime gameTime) { }
+
+    public override void Draw(GameTime gameTime)
+    {
+        Core.GraphicsDevice.Clear(Color.Black);
+
+        Core.SpriteBatch.Begin(
+            samplerState: SamplerState.PointClamp,
+            transformMatrix: Core.ScaleMatrix
+        );
+
+        Core.SpriteBatch.End();
+    }
+
+    /*private void updateUI(SpriteBatch sb, SpriteFont dg)
     {
         sb.Begin(samplerState: SamplerState.PointClamp);
         sb.DrawString(
             dg,
-            _you.getName(),
+            _yourPokemon.getName(),
             new Vector2(100, 700),
             Color.White,
             0f,
@@ -38,7 +64,7 @@ public class Battle
         );
         sb.DrawString(
             dg,
-            _you.hp + "/" + _you.maxHP,
+            _yourPokemon.hp + "/" + _yourPokemon.maxHP,
             new Vector2(400, 700),
             Color.White,
             0f,
@@ -49,7 +75,7 @@ public class Battle
         );
         sb.DrawString(
             dg,
-            _you.attack1.name + " dmg:" + _you.attack1.damage,
+            _yourPokemon.attack1.name + " dmg:" + _yourPokemon.attack1.damage,
             new Vector2(100, 800),
             Color.White,
             0f,
@@ -60,7 +86,7 @@ public class Battle
         );
         sb.DrawString(
             dg,
-            _you.attack2.name + " dmg:" + _you.attack2.damage,
+            _yourPokemon.attack2.name + " dmg:" + _yourPokemon.attack2.damage,
             new Vector2(100, 900),
             Color.White,
             0f,
@@ -71,7 +97,7 @@ public class Battle
         );
         sb.DrawString(
             dg,
-            _you.attack3.name + " dmg:" + _you.attack3.damage,
+            _yourPokemon.attack3.name + " dmg:" + _yourPokemon.attack3.damage,
             new Vector2(100, 1000),
             Color.White,
             0f,
@@ -83,7 +109,7 @@ public class Battle
 
         sb.DrawString(
             dg,
-            _opp.getName(),
+            _opponentsPokemon.getName(),
             new Vector2(1500, 80),
             Color.White,
             0f,
@@ -94,7 +120,7 @@ public class Battle
         );
         sb.DrawString(
             dg,
-            _opp.hp + "/" + _opp.maxHP,
+            _opponentsPokemon.hp + "/" + _opponentsPokemon.maxHP,
             new Vector2(1700, 80),
             Color.White,
             0f,
@@ -105,7 +131,7 @@ public class Battle
         );
         sb.DrawString(
             dg,
-            _opp.attack1.name + " dmg:" + _opp.attack1.damage,
+            _opponentsPokemon.attack1.name + " dmg:" + _opponentsPokemon.attack1.damage,
             new Vector2(1500, 180),
             Color.White,
             0f,
@@ -116,7 +142,7 @@ public class Battle
         );
         sb.DrawString(
             dg,
-            _opp.attack2.name + " dmg:" + _opp.attack2.damage,
+            _opponentsPokemon.attack2.name + " dmg:" + _opponentsPokemon.attack2.damage,
             new Vector2(1500, 280),
             Color.White,
             0f,
@@ -127,7 +153,7 @@ public class Battle
         );
         sb.DrawString(
             dg,
-            _opp.attack3.name + " dmg:" + _opp.attack3.damage,
+            _opponentsPokemon.attack3.name + " dmg:" + _opponentsPokemon.attack3.damage,
             new Vector2(1500, 380),
             Color.White,
             0f,
@@ -137,5 +163,5 @@ public class Battle
             0f
         );
         sb.End();
-    }
+    }*/
 }

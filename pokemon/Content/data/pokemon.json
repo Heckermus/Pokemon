@@ -2,73 +2,198 @@
     "pokemon": [
         {
             "name": "Flamon",
-            "id": 1,
+            "id": "flamon",
             "type": "Fire",
             "stats": {
                 "hp": 15,
                 "attack": 1.1,
                 "defense": 0.9,
-                "special-attack" : 1.1,
-                "special-defense" : 0.8,
+                "special-attack": 1.1,
+                "special-defense": 0.8,
                 "stamina": 30
             },
-            "attacks": ["Ember", "Fire", "Inferno"]
+            "attacks": [
+                {
+                    "name": "Ember",
+                    "stats": {
+                        "damage": 5,
+                        "ap": 1,
+                        "special": false
+                    }
+                },
+                {
+                    "name": "Fire",
+                    "stats": {
+                        "damage": 8,
+                        "ap": 2,
+                        "special": false
+                    }
+                },
+                {
+                    "name": "Inferno",
+                    "stats": {
+                        "damage": 20,
+                        "ap": 8,
+                        "special": true
+                    }
+                }
+            ]
         },
         {
             "name": "Aquon",
-            "id": 2,
+            "id": "aquon",
             "type": "Water",
             "stats": {
                 "hp": 15,
                 "attack": 1,
                 "defense": 1.1,
-                "special-attack" : 1,
-                "special-defense" : 1,
+                "special-attack": 1,
+                "special-defense": 1,
                 "stamina": 30
             },
-            "attacks": ["Bubble", "Wave", "Tsunami"]
+            "attacks": [
+                {
+                    "name": "Bubble",
+                    "stats": {
+                        "damage": 3,
+                        "ap": 1,
+                        "special": false
+                    }
+                },
+                {
+                    "name": "Wave",
+                    "stats": {
+                        "damage": 6,
+                        "ap": 2,
+                        "special": false
+                    }
+                },
+                {
+                    "name": "Tsunami",
+                    "stats": {
+                        "damage": 12,
+                        "ap": 4,
+                        "special": true
+                    }
+                }
+            ]
         },
         {
             "name": "Earthon",
-            "id": 3,
+            "id": "earthon",
             "type": "Plant",
             "stats": {
                 "hp": 20,
                 "attack": 0.9,
                 "defense": 1.2,
-                "special-attack" : 0.9,
-                "special-defense" : 1.2,
+                "special-attack": 0.9,
+                "special-defense": 1.2,
                 "stamina": 30
             },
-            "attacks": ["Grass", "Bush", "Tree"]
+            "attacks": [
+                {
+                    "name": "Grass",
+                    "stats": {
+                        "damage": 1,
+                        "ap": 0,
+                        "special": false
+                    }
+                },
+                {
+                    "name": "Bush",
+                    "stats": {
+                        "damage": 4,
+                        "ap": 1,
+                        "special": false
+                    }
+                },
+                {
+                    "name": "Tree",
+                    "stats": {
+                        "damage": 6,
+                        "ap": 2,
+                        "special": false
+                    }
+                }
+            ]
         },
         {
             "name": "Airon",
-            "id": 4,
+            "id": "airon",
             "type": "Flying",
             "stats": {
                 "hp": 18,
                 "attack": 0.8,
                 "defense": 1.3,
-                "special-attack" : 0.9,
-                "special-defense" : 1,
+                "special-attack": 0.9,
+                "special-defense": 1,
                 "stamina": 30
             },
-            "attacks": ["Breeze", "Wind", "Storm"]
+            "attacks": [
+                {
+                    "name": "Breeze",
+                    "stats": {
+                        "damage": 4,
+                        "ap": 1,
+                        "special": false
+                    }
+                },
+                {
+                    "name": "Wind",
+                    "stats": {
+                        "damage": 8,
+                        "ap": 3,
+                        "special": false
+                    }
+                },
+                {
+                    "name": "Storm",
+                    "stats": {
+                        "damage": 12,
+                        "ap": 5,
+                        "special": true
+                    }
+                }
+            ]
         },
         {
             "name": "Electron",
-            "id": 5,
+            "id": "electron",
             "type": "Electric",
             "stats": {
                 "hp": 20,
                 "attack": 1.2,
                 "defense": 1,
-                "special-attack" : 1.1,
-                "special-defense" : 0.7,
+                "special-attack": 1.1,
+                "special-defense": 0.7,
                 "stamina": 30
             },
-            "attacks": ["Power", "Lightning", "Thunderstorm"]
+            "attacks": [
+                {
+                    "name": "Power",
+                    "stats": {
+                        "damage": 5,
+                        "ap": 1,
+                        "special": false
+                    }
+                },
+                {
+                    "name": "Lightning",
+                    "stats": {
+                        "damage": 8,
+                        "ap": 2,
+                        "special": true
+                    }
+                },
+                {
+                    "name": "Thunderstorm",
+                    "stats": {
+                        "damage": 9,
+                        "ap": 4,
+                        "special": true
+                    }
+                }
+            ]
         }
     ]
 }

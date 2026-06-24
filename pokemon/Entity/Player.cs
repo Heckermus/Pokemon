@@ -20,7 +20,7 @@ public class Player
     private Dictionary<(Direction, bool isMoving), AnimatedSprite> _animations;
     private AnimatedSprite _currentAnimation;
     private Direction _facing = Direction.Down;
-    private Vector2 _playerPosition;
+    private Vector2 _position;
     private const float SPEED = 1.0f;
 
     public Player(TextureAtlas atlas)
@@ -47,25 +47,25 @@ public class Player
 
         if (input.Keyboard.IsKeyDown(Keys.W))
         {
-            _playerPosition.Y -= SPEED;
+            _position.Y -= SPEED;
             newFacing = Direction.Up;
             isMoving = true;
         }
         if (input.Keyboard.IsKeyDown(Keys.S))
         {
-            _playerPosition.Y += SPEED;
+            _position.Y += SPEED;
             newFacing = Direction.Down;
             isMoving = true;
         }
         if (input.Keyboard.IsKeyDown(Keys.A))
         {
-            _playerPosition.X -= SPEED;
+            _position.X -= SPEED;
             newFacing = Direction.Left;
             isMoving = true;
         }
         if (input.Keyboard.IsKeyDown(Keys.D))
         {
-            _playerPosition.X += SPEED;
+            _position.X += SPEED;
             newFacing = Direction.Right;
             isMoving = true;
         }
@@ -83,6 +83,6 @@ public class Player
 
     public void Draw(SpriteBatch spriteBatch)
     {
-        _currentAnimation.Draw(spriteBatch, _playerPosition);
+        _currentAnimation.Draw(spriteBatch, _position);
     }
 }
