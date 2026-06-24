@@ -21,6 +21,7 @@ public class Game1 : Core
         base.Initialize();
 
         ChangeScene(new GameScene());
+        Console.WriteLine(PokemonRegistry.POKEMONS["flamon"].maxHP);
 
         //InitializeGum();
     }
