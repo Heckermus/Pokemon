@@ -11,33 +11,7 @@
                 "special-attack": 1.1,
                 "special-defense": 0.8,
                 "stamina": 30
-            },
-            "attacks": [
-                {
-                    "name": "Ember",
-                    "stats": {
-                        "damage": 5,
-                        "ap": 1,
-                        "special": false
-                    }
-                },
-                {
-                    "name": "Fire",
-                    "stats": {
-                        "damage": 8,
-                        "ap": 2,
-                        "special": false
-                    }
-                },
-                {
-                    "name": "Inferno",
-                    "stats": {
-                        "damage": 20,
-                        "ap": 8,
-                        "special": true
-                    }
-                }
-            ]
+            }
         },
         {
             "name": "Aquon",
@@ -50,33 +24,7 @@
                 "special-attack": 1,
                 "special-defense": 1,
                 "stamina": 30
-            },
-            "attacks": [
-                {
-                    "name": "Bubble",
-                    "stats": {
-                        "damage": 3,
-                        "ap": 1,
-                        "special": false
-                    }
-                },
-                {
-                    "name": "Wave",
-                    "stats": {
-                        "damage": 6,
-                        "ap": 2,
-                        "special": false
-                    }
-                },
-                {
-                    "name": "Tsunami",
-                    "stats": {
-                        "damage": 12,
-                        "ap": 4,
-                        "special": true
-                    }
-                }
-            ]
+            }
         },
         {
             "name": "Earthon",
@@ -89,33 +37,7 @@
                 "special-attack": 0.9,
                 "special-defense": 1.2,
                 "stamina": 30
-            },
-            "attacks": [
-                {
-                    "name": "Grass",
-                    "stats": {
-                        "damage": 1,
-                        "ap": 0,
-                        "special": false
-                    }
-                },
-                {
-                    "name": "Bush",
-                    "stats": {
-                        "damage": 4,
-                        "ap": 1,
-                        "special": false
-                    }
-                },
-                {
-                    "name": "Tree",
-                    "stats": {
-                        "damage": 6,
-                        "ap": 2,
-                        "special": false
-                    }
-                }
-            ]
+            }
         },
         {
             "name": "Airon",
@@ -128,33 +50,7 @@
                 "special-attack": 0.9,
                 "special-defense": 1,
                 "stamina": 30
-            },
-            "attacks": [
-                {
-                    "name": "Breeze",
-                    "stats": {
-                        "damage": 4,
-                        "ap": 1,
-                        "special": false
-                    }
-                },
-                {
-                    "name": "Wind",
-                    "stats": {
-                        "damage": 8,
-                        "ap": 3,
-                        "special": false
-                    }
-                },
-                {
-                    "name": "Storm",
-                    "stats": {
-                        "damage": 12,
-                        "ap": 5,
-                        "special": true
-                    }
-                }
-            ]
+            }
         },
         {
             "name": "Electron",
@@ -167,33 +63,7 @@
                 "special-attack": 1.1,
                 "special-defense": 0.7,
                 "stamina": 30
-            },
-            "attacks": [
-                {
-                    "name": "Power",
-                    "stats": {
-                        "damage": 5,
-                        "ap": 1,
-                        "special": false
-                    }
-                },
-                {
-                    "name": "Lightning",
-                    "stats": {
-                        "damage": 8,
-                        "ap": 2,
-                        "special": true
-                    }
-                },
-                {
-                    "name": "Thunderstorm",
-                    "stats": {
-                        "damage": 9,
-                        "ap": 4,
-                        "special": true
-                    }
-                }
-            ]
+            }
         }
     ]
 }

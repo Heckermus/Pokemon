@@ -8,12 +8,38 @@
     "resistant": [],
     "immune": [
       "Ghost"
+    ],
+    "attacks": [
+      {
+        "name": "Tackle",
+        "stats": {
+          "damage": 5,
+          "ap": 1,
+          "special": false
+        }
+      },
+      {
+        "name": "Stomp",
+        "stats": {
+          "damage": 8,
+          "ap": 2,
+          "special": false
+        }
+      },
+      {
+        "name": "Backflip",
+        "stats": {
+          "damage": 2,
+          "ap": 1,
+          "special": false
+        }
+      }
     ]
   },
   {
     "type": "Fire",
     "effective": [
-      "Plant",
+      "Grass",
       "Ice",
       "Bug"
     ],
@@ -24,10 +50,36 @@
     ],
     "resistant": [
       "Fire",
-      "Plant",
+      "Grass",
       "Bug"
     ],
-    "immune": []
+    "immune": [],
+    "attacks": [
+      {
+        "name": "Ember",
+        "stats": {
+          "damage": 5,
+          "ap": 1,
+          "special": false
+        }
+      },
+      {
+        "name": "Fire",
+        "stats": {
+          "damage": 8,
+          "ap": 2,
+          "special": false
+        }
+      },
+      {
+        "name": "Inferno",
+        "stats": {
+          "damage": 20,
+          "ap": 8,
+          "special": true
+        }
+      }
+    ]
   },
   {
     "type": "Water",
@@ -38,14 +90,40 @@
     ],
     "weakness": [
       "Electric",
-      "Plant"
+      "Grass"
     ],
     "resistant": [
       "Fire",
       "Water",
       "Ice"
     ],
-    "immune": []
+    "immune": [],
+    "attacks": [
+      {
+        "name": "Bubble",
+        "stats": {
+          "damage": 3,
+          "ap": 1,
+          "special": false
+        }
+      },
+      {
+        "name": "Wave",
+        "stats": {
+          "damage": 6,
+          "ap": 2,
+          "special": false
+        }
+      },
+      {
+        "name": "Tsunami",
+        "stats": {
+          "damage": 12,
+          "ap": 4,
+          "special": true
+        }
+      }
+    ]
   },
   {
     "type": "Electric",
@@ -60,7 +138,33 @@
       "Electric",
       "Flying"
     ],
-    "immune": []
+    "immune": [],
+    "attacks": [
+      {
+        "name": "Power",
+        "stats": {
+          "damage": 5,
+          "ap": 1,
+          "special": false
+        }
+      },
+      {
+        "name": "Lightning",
+        "stats": {
+          "damage": 8,
+          "ap": 2,
+          "special": true
+        }
+      },
+      {
+        "name": "Thunderstorm",
+        "stats": {
+          "damage": 9,
+          "ap": 4,
+          "special": true
+        }
+      }
+    ]
   },
   {
     "type": "Plant",
@@ -79,13 +183,41 @@
     "resistant": [
       "Electric",
       "Water",
+      "Grass",
       "Ground"
+    ],
+    "immune": [],
+    "attacks": [
+      {
+        "name": "Grass",
+        "stats": {
+          "damage": 1,
+          "ap": 0,
+          "special": false
+        }
+      },
+      {
+        "name": "Bush",
+        "stats": {
+          "damage": 4,
+          "ap": 1,
+          "special": false
+        }
+      },
+      {
+        "name": "Tree",
+        "stats": {
+          "damage": 6,
+          "ap": 2,
+          "special": false
+        }
+      }
     ]
   },
   {
     "type": "Ice",
     "effective": [
-      "Plant",
+      "Grass",
       "Ground",
       "Flying",
       "Dragon"
@@ -98,7 +230,33 @@
     "resistant": [
       "Ice"
     ],
-    "immune": []
+    "immune": [],
+    "attacks": [
+      {
+        "name": "Freeze",
+        "stats": {
+          "damage": 6,
+          "ap": 1,
+          "special": false
+        }
+      },
+      {
+        "name": "Doublecup",
+        "stats": {
+          "damage": 8,
+          "ap": 2,
+          "special": true
+        }
+      },
+      {
+        "name": "Icebreaker",
+        "stats": {
+          "damage": 10,
+          "ap": 5,
+          "special": false
+        }
+      }
+    ]
   },
   {
     "type": "Fighting",
@@ -115,12 +273,38 @@
       "Bug",
       "Rock"
     ],
-    "immune": []
+    "immune": [],
+    "attacks": [
+      {
+        "name": "Punch",
+        "stats": {
+          "damage": 6,
+          "ap": 1,
+          "special": false
+        }
+      },
+      {
+        "name": "Kick",
+        "stats": {
+          "damage": 8,
+          "ap": 2,
+          "special": false
+        }
+      },
+      {
+        "name": "Finisher",
+        "stats": {
+          "damage": 50,
+          "ap": 30,
+          "special": false
+        }
+      }
+    ]
   },
   {
     "type": "Poison",
     "effective": [
-      "Plant",
+      "Grass",
       "Bug"
     ],
     "weakness": [
@@ -129,10 +313,36 @@
       "Bug"
     ],
     "resistant": [
-      "Plant",
+      "Grass",
       "Poison"
     ],
-    "immune": []
+    "immune": [],
+    "attacks": [
+      {
+        "name": "Spit",
+        "stats": {
+          "damage": 4,
+          "ap": 1,
+          "special": false
+        }
+      },
+      {
+        "name": "Vaccinate",
+        "stats": {
+          "damage": 8,
+          "ap": 4,
+          "special": true
+        }
+      },
+      {
+        "name": "Vomit",
+        "stats": {
+          "damage": 7,
+          "ap": 3,
+          "special": false
+        }
+      }
+    ]
   },
   {
     "type": "Ground",
@@ -144,7 +354,7 @@
     ],
     "weakness": [
       "Water",
-      "Plant",
+      "Grass",
       "Ice"
     ],
     "resistant": [
@@ -153,12 +363,38 @@
     ],
     "immune": [
       "Electric"
+    ],
+    "attacks": [
+      {
+        "name": "Roll",
+        "stats": {
+          "damage": 4,
+          "ap": 1,
+          "special": false
+        }
+      },
+      {
+        "name": "Dirtthrow",
+        "stats": {
+          "damage": 2,
+          "ap": 0,
+          "special": false
+        }
+      },
+      {
+        "name": "Earthquake",
+        "stats": {
+          "damage": 11,
+          "ap": 6,
+          "special": true
+        }
+      }
     ]
   },
   {
     "type": "Flying",
     "effective": [
-      "Plant",
+      "Grass",
       "Fighting",
       "Bug"
     ],
@@ -169,11 +405,37 @@
     ],
     "resistant": [
       "Fighting",
-      "Plant",
+      "Grass",
       "Bug"
     ],
     "immune": [
       "Ground"
+    ],
+    "attacks": [
+      {
+        "name": "Breeze",
+        "stats": {
+          "damage": 4,
+          "ap": 1,
+          "special": false
+        }
+      },
+      {
+        "name": "Wind",
+        "stats": {
+          "damage": 8,
+          "ap": 3,
+          "special": false
+        }
+      },
+      {
+        "name": "Storm",
+        "stats": {
+          "damage": 12,
+          "ap": 5,
+          "special": true
+        }
+      }
     ]
   },
   {
@@ -190,12 +452,38 @@
     ],
     "immune": [
       "Ghost"
+    ],
+    "attacks": [
+      {
+        "name": "Scream",
+        "stats": {
+          "damage": 5,
+          "ap": 1,
+          "special": false
+        }
+      },
+      {
+        "name": "Dance",
+        "stats": {
+          "damage": 7,
+          "ap": 2,
+          "special": true
+        }
+      },
+      {
+        "name": "Scare",
+        "stats": {
+          "damage": 2,
+          "ap": 0,
+          "special": true
+        }
+      }
     ]
   },
   {
     "type": "Bug",
     "effective": [
-      "Plant",
+      "Grass",
       "Poison",
       "Psycho"
     ],
@@ -206,11 +494,37 @@
       "Rock"
     ],
     "resistant": [
-      "Plant",
+      "Grass",
       "Fighting",
       "Ground"
     ],
-    "immune": []
+    "immune": [],
+    "attacks": [
+      {
+        "name": "Sting",
+        "stats": {
+          "damage": 5,
+          "ap": 1,
+          "special": false
+        }
+      },
+      {
+        "name": "Bzzzz",
+        "stats": {
+          "damage": 7,
+          "ap": 2,
+          "special": false
+        }
+      },
+      {
+        "name": "Singing",
+        "stats": {
+          "damage": 0,
+          "ap": 0,
+          "special": false
+        }
+      }
+    ]
   },
   {
     "type": "Rock",
@@ -222,7 +536,7 @@
     ],
     "weakness": [
       "Water",
-      "Plant",
+      "Grass",
       "Fighting",
       "Ground"
     ],
@@ -232,7 +546,33 @@
       "Poison",
       "Flying"
     ],
-    "immune": []
+    "immune": [],
+    "attacks": [
+      {
+        "name": "Crush",
+        "stats": {
+          "damage": 6,
+          "ap": 2,
+          "special": false
+        }
+      },
+      {
+        "name": "Spinning",
+        "stats": {
+          "damage": 4,
+          "ap": 1,
+          "special": false
+        }
+      },
+      {
+        "name": "Shatter",
+        "stats": {
+          "damage": 11,
+          "ap": 5,
+          "special": true
+        }
+      }
+    ]
   },
   {
     "type": "Ghost",
@@ -249,6 +589,32 @@
     "immune": [
       "Normal",
       "Fighting"
+    ],
+    "attacks": [
+      {
+        "name": "Haunt",
+        "stats": {
+          "damage": 4,
+          "ap": 1,
+          "special": false
+        }
+      },
+      {
+        "name": "Conjuring",
+        "stats": {
+          "damage": 7,
+          "ap": 2,
+          "special": true
+        }
+      },
+      {
+        "name": "Laugh",
+        "stats": {
+          "damage": 2,
+          "ap": 0,
+          "special": false
+        }
+      }
     ]
   },
   {
@@ -264,8 +630,34 @@
       "Fire",
       "Water",
       "Electric",
-      "Plant"
+      "Grass"
     ],
-    "immune": []
+    "immune": [],
+    "attacks": [
+      {
+        "name": "RAAAARR",
+        "stats": {
+          "damage": 9,
+          "ap": 6,
+          "special": false
+        }
+      },
+      {
+        "name": "Befog",
+        "stats": {
+          "damage": 4,
+          "ap": 2,
+          "special": true
+        }
+      },
+      {
+        "name": "Blast",
+        "stats": {
+          "damage": 11,
+          "ap": 9,
+          "special": true
+        }
+      }
+    ]
   }
 ]
