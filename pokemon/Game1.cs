@@ -13,6 +13,8 @@ namespace pokemon;
 
 public class Game1 : Core
 {
+    Battle b;
+    
     public Game1()
         : base("Pokemon", 1280, 720, false, virtualWidth: 256, virtualHeight: 144) { }
 
@@ -21,13 +23,14 @@ public class Game1 : Core
         base.Initialize();
 
         ChangeScene(new GameScene());
-        Console.WriteLine(PokemonRegistry.POKEMONS["flamon"].maxHP);
+        Console.WriteLine(PokemonRegistry.POKEMONS["flamon"].pokedex);
 
         //InitializeGum();
     }
 
     protected override void LoadContent()
     {
+        b = new Battle()
         base.LoadContent();
     }
 

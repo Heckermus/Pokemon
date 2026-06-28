@@ -8,25 +8,39 @@ namespace pokemon.Entity;
 
 public class PokemonInstance
 {
-    private AnimatedSprite _pokemon;
+    //private AnimatedSprite _pokemon;
     private Pokemon _basePokemon;
     private Vector2 _position;
 
-    public string _nickname { get; }
+    private int hp;
+    private int maxHP;
+    private double attackFactor;
+    private double defenseFactor;
+    private double specialAttackFactor;
+    private double specialDefenseFactor;
+    private int stamina;
+
+    private string _nickname;
 
     public PokemonInstance(Pokemon _basePokemon, TextureAtlas atlas)
     {
         this._basePokemon = _basePokemon;
-        _pokemon = atlas.CreateAnimatedSprite(_basePokemon.id);
+        //_pokemon = atlas.CreateAnimatedSprite(_basePokemon.id);
     }
 
     public void Update(GameTime gameTime, InputManager input)
     {
-        _pokemon.Update(gameTime);
+        //_pokemon.Update(gameTime);
     }
 
     public void Draw(SpriteBatch spriteBatch)
     {
-        _pokemon.Draw(spriteBatch, _position);
+        //_pokemon.Draw(spriteBatch, _position);
+    }
+
+    public string getNickname()
+    {
+        if (_nickname != null) return _nickname;
+        return _basePokemon.name;
     }
 }

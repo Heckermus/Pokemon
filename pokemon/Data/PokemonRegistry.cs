@@ -43,6 +43,7 @@ public class PokemonEntry
 {
     public string name { get; set; }
     public string id { get; set; }
+    public int pokedex {get; set;}
     public string type { get; set; }
     public StatsEntry stats { get; set; }
 }
@@ -114,6 +115,7 @@ public static class PokemonRegistry
             entry.name,
             Enum.Parse<Type>(entry.type),
             entry.id,
+            entry.pokedex,
             entry.stats.hp,
             entry.stats.attack,
             entry.stats.defense,

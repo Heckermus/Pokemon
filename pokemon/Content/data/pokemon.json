@@ -3,6 +3,7 @@
         {
             "name": "Flamon",
             "id": "flamon",
+            "pokedex": 1,
             "type": "Fire",
             "stats": {
                 "hp": 15,
@@ -16,6 +17,7 @@
         {
             "name": "Aquon",
             "id": "aquon",
+            "pokedex": 2,
             "type": "Water",
             "stats": {
                 "hp": 15,
@@ -29,6 +31,7 @@
         {
             "name": "Earthon",
             "id": "earthon",
+            "pokedex": 3,
             "type": "Plant",
             "stats": {
                 "hp": 20,
@@ -42,6 +45,7 @@
         {
             "name": "Airon",
             "id": "airon",
+            "pokedex": 4,
             "type": "Flying",
             "stats": {
                 "hp": 18,
@@ -55,6 +59,7 @@
         {
             "name": "Electron",
             "id": "electron",
+            "pokedex": 5,
             "type": "Electric",
             "stats": {
                 "hp": 20,
