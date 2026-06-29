@@ -44,8 +44,7 @@
         <Region name="floorLightRocky" x="96" y="64" width="16" height="16" />
         <Region name="floorDarkRocky" x="112" y="64" width="16" height="16" />
 
-        <Region name="flamon" x="0" y="80" width="16" height="16" />
-        <Region name="aquon" x="0" y="80" width="16" height="16" />
+        <Region name="pokemon" x="0" y="80" width="16" height="16" />
     </Regions>
     <Animations>
         <Animation name="playerIdleUp" delay="500">

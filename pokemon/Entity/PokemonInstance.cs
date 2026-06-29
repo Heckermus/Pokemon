@@ -1,14 +1,9 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using MonoGameLibrary.Graphics;
-using MonoGameLibrary.Input;
 using pokemon.Data;
 
 namespace pokemon.Entity;
 
 public class PokemonInstance
 {
-    //private AnimatedSprite _pokemon;
     public Pokemon _basePokemon { get; }
     public int hp { get; set; }
     public int stamina { get; set; }

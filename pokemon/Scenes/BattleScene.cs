@@ -1,9 +1,9 @@
 using System;
-using System.Numerics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGameLibrary;
+using MonoGameLibrary.Graphics;
 using MonoGameLibrary.Scenes;
 using pokemon.Data;
 using pokemon.Entity;
@@ -16,8 +16,11 @@ public class Battle : Scene
     private SpriteFont _fontBold;
     private Random _random = new Random();
 
-    private PokemonInstance _yourPokemon;
-    private PokemonInstance _opponentPokemon;
+    private PokemonInstance _playerPokemon;
+    private PokemonInstance _enemyokemon;
+
+    private PokemonVisual _playerVisual;
+    private PokemonVisual _enemyVisual;
 
     private bool _playersTurn;
     private bool _battleOver = false;
@@ -28,8 +31,8 @@ public class Battle : Scene
 
     public Battle(PokemonInstance yourPokemon, PokemonInstance opponentsPokemon, bool playersTurn)
     {
-        _yourPokemon = yourPokemon;
-        _opponentPokemon = opponentsPokemon;
+        _playerPokemon = yourPokemon;
+        _enemyokemon = opponentsPokemon;
         _playersTurn = playersTurn;
     }
 
@@ -42,15 +45,21 @@ public class Battle : Scene
 
     public override void LoadContent()
     {
+        TextureAtlas atlas = TextureAtlas.FromFile(Core.Content, "images/atlas-definition.xml");
+
+        _playerVisual = new PokemonVisual(atlas, new Vector2(32, 72));
+        _enemyVisual = new PokemonVisual(atlas, new Vector2(192, 72));
+
         _font = Content.Load<SpriteFont>("fonts/6x8");
         _fontBold = Content.Load<SpriteFont>("fonts/8x8");
-
-        base.LoadContent();
     }
 
     public override void Update(GameTime gameTime)
     {
         messageTimer += gameTime.ElapsedGameTime.TotalSeconds;
+
+        _playerVisual.Update(gameTime);
+        _enemyVisual.Update(gameTime);
 
         if (_battleOver && messageTimer >= MESSAGE_DURATION * 2)
         {
@@ -61,36 +70,36 @@ public class Battle : Scene
             if (_playersTurn)
             {
                 if (Core.Input.Keyboard.WasKeyJustPressed(Keys.D1))
-                    Attack(_yourPokemon, _opponentPokemon, _yourPokemon._basePokemon.attack1);
+                {
+                    Attack(_playerPokemon, _enemyokemon, _playerPokemon._basePokemon.attack1);
+                    _enemyVisual.TakeDamageVisual();
+                }
                 else if (Core.Input.Keyboard.WasKeyJustPressed(Keys.D2))
-                    Attack(_yourPokemon, _opponentPokemon, _yourPokemon._basePokemon.attack2);
+                {
+                    Attack(_playerPokemon, _enemyokemon, _playerPokemon._basePokemon.attack2);
+                    _enemyVisual.TakeDamageVisual();
+                }
                 else if (Core.Input.Keyboard.WasKeyJustPressed(Keys.D3))
-                    Attack(_yourPokemon, _opponentPokemon, _yourPokemon._basePokemon.attack3);
+                {
+                    Attack(_playerPokemon, _enemyokemon, _playerPokemon._basePokemon.attack3);
+                    _enemyVisual.TakeDamageVisual();
+                }
             }
             else if (!_playersTurn && messageTimer >= MESSAGE_DURATION)
             {
                 switch (_random.Next(1, 4))
                 {
                     case 1:
-                        Attack(
-                            _opponentPokemon,
-                            _yourPokemon,
-                            _opponentPokemon._basePokemon.attack1
-                        );
+                        Attack(_enemyokemon, _playerPokemon, _enemyokemon._basePokemon.attack1);
+                        _playerVisual.TakeDamageVisual();
                         break;
                     case 2:
-                        Attack(
-                            _opponentPokemon,
-                            _yourPokemon,
-                            _opponentPokemon._basePokemon.attack2
-                        );
+                        Attack(_enemyokemon, _playerPokemon, _enemyokemon._basePokemon.attack2);
+                        _playerVisual.TakeDamageVisual();
                         break;
                     case 3:
-                        Attack(
-                            _opponentPokemon,
-                            _yourPokemon,
-                            _opponentPokemon._basePokemon.attack3
-                        );
+                        Attack(_enemyokemon, _playerPokemon, _enemyokemon._basePokemon.attack3);
+                        _playerVisual.TakeDamageVisual();
                         break;
                 }
             }
@@ -106,41 +115,43 @@ public class Battle : Scene
             transformMatrix: Core.ScaleMatrix
         );
 
-        //INFO: Pokemon Stats HP and Names
-        Write(_yourPokemon.getName(), 16, 16, bold: true);
-        Write(_yourPokemon.hp + "/" + _yourPokemon._basePokemon.maxHP, 16, 24);
-        Write(_opponentPokemon.getName(), 192, 16, bold: true);
-        Write(_opponentPokemon.hp + "/" + _opponentPokemon._basePokemon.maxHP, 192, 24); //Fixme: 200 not multiple of 2
+        _playerVisual.Draw(Core.SpriteBatch);
+        _enemyVisual.Draw(Core.SpriteBatch);
+
+        Write(_playerPokemon.getName(), 16, 16, bold: true);
+        Write(_playerPokemon.hp + "/" + _playerPokemon._basePokemon.maxHP, 16, 24);
+        Write(_enemyokemon.getName(), 192, 16, bold: true);
+        Write(_enemyokemon.hp + "/" + _enemyokemon._basePokemon.maxHP, 192, 24);
 
         if (!string.IsNullOrEmpty(lastMsg))
-            Write(lastMsg, 128, 96);
+            Write(lastMsg, 112, 128);
 
         if (_playersTurn)
         {
             Write("It's your turn!", 16, 108, bold: true, scale: 0.5f);
             Write(
                 "Press 1: "
-                    + _yourPokemon._basePokemon.attack1.name
+                    + _playerPokemon._basePokemon.attack1.name
                     + " dmg: "
-                    + DamageCalc(_yourPokemon, _yourPokemon._basePokemon.attack1),
+                    + DamageCalc(_playerPokemon, _playerPokemon._basePokemon.attack1),
                 16,
                 117,
                 scale: 0.5f
             );
             Write(
                 "Press 2: "
-                    + _yourPokemon._basePokemon.attack2.name
+                    + _playerPokemon._basePokemon.attack2.name
                     + " dmg: "
-                    + DamageCalc(_yourPokemon, _yourPokemon._basePokemon.attack2),
+                    + DamageCalc(_playerPokemon, _playerPokemon._basePokemon.attack2),
                 16,
                 126,
                 scale: 0.5f
             );
             Write(
                 "Press 3: "
-                    + _yourPokemon._basePokemon.attack3.name
+                    + _playerPokemon._basePokemon.attack3.name
                     + " dmg: "
-                    + DamageCalc(_yourPokemon, _yourPokemon._basePokemon.attack3),
+                    + DamageCalc(_playerPokemon, _playerPokemon._basePokemon.attack3),
                 16,
                 135,
                 scale: 0.5f
