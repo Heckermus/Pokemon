@@ -43,7 +43,7 @@ public class PokemonEntry
 {
     public string name { get; set; }
     public string id { get; set; }
-    public int pokedex {get; set;}
+    public int pokedex { get; set; }
     public string type { get; set; }
     public StatsEntry stats { get; set; }
 }
