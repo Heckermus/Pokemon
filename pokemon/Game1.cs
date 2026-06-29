@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using MonoGameGum;
 using MonoGameLibrary;
 using pokemon.Data;
+using pokemon.Entity;
 using pokemon.Scenes;
 
 namespace pokemon;
@@ -16,13 +17,13 @@ public class Game1 : Core
     Battle b;
     
     public Game1()
-        : base("Pokemon", 1280, 720, false, virtualWidth: 256, virtualHeight: 144) { }
+        : base("Pokemon", 1920, 1080, true, virtualWidth: 256, virtualHeight: 144) { }
 
     protected override void Initialize()
     {
         base.Initialize();
 
-        ChangeScene(new GameScene());
+        ChangeScene(new Battle(new PokemonInstance(PokemonRegistry.POKEMONS["earthon"]), new PokemonInstance(PokemonRegistry.POKEMONS["electron"])));
         Console.WriteLine(PokemonRegistry.POKEMONS["flamon"].pokedex);
 
         //InitializeGum();
@@ -30,7 +31,6 @@ public class Game1 : Core
 
     protected override void LoadContent()
     {
-        b = new Battle()
         base.LoadContent();
     }
 
