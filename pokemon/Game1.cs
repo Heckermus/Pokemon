@@ -23,7 +23,7 @@ public class Game1 : Core
     {
         base.Initialize();
 
-        ChangeScene(new Battle(new PokemonInstance(PokemonRegistry.POKEMONS["earthon"]), new PokemonInstance(PokemonRegistry.POKEMONS["electron"])));
+        ChangeScene(new Battle(new PokemonInstance(PokemonRegistry.POKEMONS["leonard"]), new PokemonInstance(PokemonRegistry.POKEMONS["huibuh"])));
         Console.WriteLine(PokemonRegistry.POKEMONS["flamon"].pokedex);
 
         //InitializeGum();

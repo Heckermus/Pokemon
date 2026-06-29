@@ -12,6 +12,8 @@ public class PokemonInstance
     private Pokemon _basePokemon;
     public int hp {get; set;}
     public int maxHP {get; set;}
+    public string id {get;}
+    public Type type { get; }
     public double attackFactor {get; set;}
     public double defenseFactor  {get; set;}
     public double specialAttackFactor  {get; set;}
@@ -29,6 +31,8 @@ public class PokemonInstance
         this._basePokemon = _basePokemon;
         this.hp = _basePokemon.maxHP;
         this.maxHP = _basePokemon.maxHP;
+        this.id = _basePokemon.id;
+        this.type = _basePokemon.type;
         this.defenseFactor = _basePokemon.defenseMult;
         this.attackFactor = _basePokemon.attackMult;
         this.specialAttackFactor = _basePokemon.specialAttackMult;

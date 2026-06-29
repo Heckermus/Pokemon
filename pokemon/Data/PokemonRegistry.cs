@@ -94,18 +94,21 @@ public static class PokemonRegistry
 
         Attack attack1 = new Attack(
             typeEntry.attacks[0].name,
+            Enum.Parse<Type>(typeEntry.type),
             typeEntry.attacks[0].stats.damage,
             typeEntry.attacks[0].stats.ap,
             typeEntry.attacks[0].stats.special
         );
         Attack attack2 = new Attack(
             typeEntry.attacks[1].name,
+            Enum.Parse<Type>(typeEntry.type),
             typeEntry.attacks[1].stats.damage,
             typeEntry.attacks[1].stats.ap,
             typeEntry.attacks[1].stats.special
         );
         Attack attack3 = new Attack(
             typeEntry.attacks[2].name,
+            Enum.Parse<Type>(typeEntry.type),
             typeEntry.attacks[2].stats.damage,
             typeEntry.attacks[2].stats.ap,
             typeEntry.attacks[2].stats.special

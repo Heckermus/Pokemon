@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.VisualBasic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -21,7 +22,12 @@ public class BattleHandler
     private KeyboardState previousKeyboard;
     public bool battleOver { get; set; }
     public string lastMsg { get; set; }
-    
+    public string additionalMsg { get; set; }
+    private double messageTimer = 0;
+    private const double MessageDur = 2.0;
+
+    private PokemonInstance dead;
+    private PokemonInstance winner;
     
     public BattleHandler(PokemonInstance p, PokemonInstance opp, SpriteBatch sb, SpriteFont font, Vector2 pos, bool playersTurn)
     {
@@ -33,36 +39,45 @@ public class BattleHandler
         this.playersTurn = playersTurn;
         previousKeyboard = Keyboard.GetState();
         battleOver = false;
+        additionalMsg = "";
     }
 
-    public void showStats()
+    public void ShowStats()
     {
-        easywrite(p.getName(), new Vector2(100, 100));
-        easywrite(p.hp + "/" + p.maxHP, new Vector2(400, 100));
-        easywrite(opp.getName(), new Vector2(1400, 100));
-        easywrite(opp.hp + "/" + opp.maxHP, new Vector2(1700, 100));
+        Easywrite(p.getName(), new Vector2(100, 100));
+        Easywrite(p.hp + "/" + p.maxHP, new Vector2(400, 100));
+        Easywrite(opp.getName(), new Vector2(1400, 100));
+        Easywrite(opp.hp + "/" + opp.maxHP, new Vector2(1700, 100));
     }
 
     
     public void Update(GameTime gameTime)
     {
-        if (battleOver) return;
-        easywrite("hello", pos);
+        messageTimer += gameTime.ElapsedGameTime.TotalSeconds;
+        if (battleOver)
+        {
+            if (messageTimer >= MessageDur)
+            {
+                lastMsg = $"{dead.getName()} ist tot! {winner.getName()} gewinnt!";
+            }
+            return;
+        }
+        
         KeyboardState kState = Keyboard.GetState();
         if (playersTurn)
         {
-            if (WasPressed(kState, Keys.D1)) attack(p, opp, p.attack1);
-            else if (WasPressed(kState, Keys.D2)) attack(p, opp, p.attack2);
-            else if (WasPressed(kState, Keys.D3)) attack(p, opp, p.attack3);
-        } else if (!playersTurn)
+            if (WasPressed(kState, Keys.D1)) Attack(p, opp, p.attack1);
+            else if (WasPressed(kState, Keys.D2)) Attack(p, opp, p.attack2);
+            else if (WasPressed(kState, Keys.D3)) Attack(p, opp, p.attack3);
+        } else if (!playersTurn && messageTimer >= MessageDur)
         {
             int numb = rnd.Next(1, 4);
 
-            switch  (numb)
+            switch (numb)
             {
-                case 1: attack(opp, p, opp.attack1); break;
-                case 2: attack(opp, p, opp.attack2); break;
-                case 3: attack(opp, p, opp.attack3); break;
+                case 1: Attack(opp, p, opp.attack1); break;
+                case 2: Attack(opp, p, opp.attack2); break;
+                case 3: Attack(opp, p, opp.attack3); break;
             }
         }
 
@@ -74,26 +89,22 @@ public class BattleHandler
 
     public void Draw()
     {
-        showStats();
-        if (!string.IsNullOrEmpty(lastMsg)) easywrite(lastMsg, new Vector2(pos.X + 1000, pos.Y + 700));
+        ShowStats();
+        if (!string.IsNullOrEmpty(lastMsg)) Easywrite(lastMsg, new Vector2(pos.X + 1000, pos.Y + 700));
         if (battleOver)
         {
             return;
         }
         if (playersTurn)
         {
-            easywrite("It's your turn!", new Vector2(pos.X + 100, pos.Y + 700));
-            easywrite("Press 1: " + p.attack1.name + " dmg: " + p.attack1.damage, new Vector2(pos.X + 100, pos.Y + 800));
-            easywrite("Press 2: " + p.attack2.name + " dmg: " + p.attack2.damage, new Vector2(pos.X + 100, pos.Y + 900));
-            easywrite("Press 3: " + p.attack3.name + " dmg: " + p.attack3.damage, new Vector2(pos.X + 100, pos.Y + 1000));
-        }
-        else
-        {
-            easywrite("The opp attacks!", pos);
+            Easywrite("It's your turn!", new Vector2(pos.X + 100, pos.Y + 700));
+            Easywrite("Press 1: " + p.attack1.name + " dmg: " + DamageCalc(p, p.attack1), new Vector2(pos.X + 100, pos.Y + 800));
+            Easywrite("Press 2: " + p.attack2.name + " dmg: " + DamageCalc(p, p.attack2), new Vector2(pos.X + 100, pos.Y + 900));
+            Easywrite("Press 3: " + p.attack3.name + " dmg: " + DamageCalc(p, p.attack3), new Vector2(pos.X + 100, pos.Y + 1000));
         }
     }
 
-    private void easywrite(string s, Vector2 position)
+    private void Easywrite(string s, Vector2 position)
     {
 
         spriteBatch.DrawString(
@@ -110,27 +121,95 @@ public class BattleHandler
 
     }
 
-    private void attack(PokemonInstance attacker, PokemonInstance defender, Attack a)
+    private void Attack(PokemonInstance attacker, PokemonInstance defender, Attack a)
     {
         if (attacker.stamina < a.ap)
         {
-            lastMsg = $"{attacker.getName()} has not enough stamina for that!";
+            SetMessage($"{attacker.getName()} has not enough stamina for that!");
+            
+            return;
         }
         
-        defender.hp = defender.hp - a.damage;
+        defender.hp -= DamageCalc(attacker, defender, a);
         attacker.stamina = attacker.stamina - a.ap;
 
-        lastMsg = $"{attacker.getName()} setzt {a.name} ein!";
+        SetMessage($"{attacker.getName()} uses {a.name}!"); 
 
         if (defender.hp <= 0)
         {
+            defender.hp = 0;
+            ShowStats();
             battleOver = true;
-            lastMsg = $"{defender.getName()} ist tot! {attacker.getName()} gewinnt!";
+            dead = defender;
+            winner = attacker;
             return;
         }
 
         playersTurn = !playersTurn;
     }
     
+    private void SetMessage(string msg)
+    {
+        lastMsg = msg;
+        if (!string.IsNullOrEmpty(additionalMsg)) lastMsg += "\n \n" + additionalMsg;
+        messageTimer = 0;
+        additionalMsg = "";
+    }
 
+    private int DamageCalc(PokemonInstance attacker, PokemonInstance defender, Attack a)
+    {
+        double damage = a.damage;
+        
+        if (a.special)
+        {
+            damage *= attacker.specialAttackFactor;
+            damage /= defender.specialDefenseFactor;
+        } else if (!a.special)
+        {
+            damage *= attacker.attackFactor;
+            damage /= defender.defenseFactor;
+        }
+        double multiplier = 1.0;
+
+        
+        string attackType = a.type.ToString();
+        string defenderType = defender.type.ToString();
+
+        if (PokemonRegistry.getWeakness(defenderType).Contains(attackType))
+        {
+            multiplier = 2.0;
+            additionalMsg = "Super effective!";
+        }
+        else if (PokemonRegistry.getResistant(defenderType).Contains(attackType))
+        {
+            multiplier = 0.5;
+            additionalMsg = "Not very effective...";
+        }
+        else if (PokemonRegistry.getImmune(defenderType).Contains(attackType))
+        {
+            multiplier = 0.0;
+            additionalMsg = $"It doesn't affect {defender.getName()}";
+        }
+        
+        damage *= multiplier;
+        
+        additionalMsg += " (" + Math.Round(damage, MidpointRounding.AwayFromZero) + " dmg)";
+        
+        return (int) Math.Round(damage, MidpointRounding.AwayFromZero);
+    }
+
+    private int DamageCalc(PokemonInstance attacker, Attack a)
+    {
+        double damage = a.damage;
+        
+        if (a.special)
+        {
+            damage *= attacker.specialAttackFactor;
+        } else if (!a.special)
+        {
+            damage *= attacker.attackFactor;
+        }
+        
+        return (int) Math.Round(damage, MidpointRounding.AwayFromZero);
+    }
 }
