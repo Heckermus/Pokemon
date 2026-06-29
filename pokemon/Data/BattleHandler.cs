@@ -58,7 +58,7 @@ public class BattleHandler
         {
             if (messageTimer >= MessageDur)
             {
-                lastMsg = $"{dead.getName()} ist tot! {winner.getName()} gewinnt!";
+                lastMsg = $"{dead.getName()} is dead! {winner.getName()} wins!";
             }
             return;
         }
@@ -123,12 +123,6 @@ public class BattleHandler
 
     private void Attack(PokemonInstance attacker, PokemonInstance defender, Attack a)
     {
-        if (attacker.stamina < a.ap)
-        {
-            SetMessage($"{attacker.getName()} has not enough stamina for that!");
-            
-            return;
-        }
         
         defender.hp -= DamageCalc(attacker, defender, a);
         attacker.stamina = attacker.stamina - a.ap;

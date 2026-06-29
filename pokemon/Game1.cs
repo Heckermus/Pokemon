@@ -14,7 +14,6 @@ namespace pokemon;
 
 public class Game1 : Core
 {
-    Battle b;
     
     public Game1()
         : base("Pokemon", 1920, 1080, true, virtualWidth: 256, virtualHeight: 144) { }
@@ -23,10 +22,7 @@ public class Game1 : Core
     {
         base.Initialize();
 
-        ChangeScene(new Battle(new PokemonInstance(PokemonRegistry.POKEMONS["leonard"]), new PokemonInstance(PokemonRegistry.POKEMONS["huibuh"])));
-        Console.WriteLine(PokemonRegistry.POKEMONS["flamon"].pokedex);
-
-        //InitializeGum();
+        ChangeScene(new Battle(new PokemonInstance(PokemonRegistry.POKEMONS["leonard"]), new PokemonInstance(PokemonRegistry.POKEMONS["david"])));
     }
 
     protected override void LoadContent()
