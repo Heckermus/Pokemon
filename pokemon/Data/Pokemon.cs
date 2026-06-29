@@ -6,7 +6,7 @@ public class Pokemon
     public Type type { get; }
 
     public string id { get; }
-    public int pokedex {get;}
+    public int pokedex { get; }
     public int maxHP { get; }
     public double attackMult { get; }
     public double defenseMult { get; }

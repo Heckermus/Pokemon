@@ -9,56 +9,23 @@ namespace pokemon.Entity;
 public class PokemonInstance
 {
     //private AnimatedSprite _pokemon;
-    private Pokemon _basePokemon;
-    public int hp {get; set;}
-    public int maxHP {get; set;}
-    public string id {get;}
-    public Type type { get; }
-    public double attackFactor {get; set;}
-    public double defenseFactor  {get; set;}
-    public double specialAttackFactor  {get; set;}
-    public double specialDefenseFactor {get; set;}
-    public int maxStamina {get; set;}
-    public int stamina  {get; set;}
-    public Attack attack1  {get; set;}
-    public Attack attack2   {get; set;}
-    public Attack attack3 {get; set;}
+    public Pokemon _basePokemon { get; }
+    public int hp { get; set; }
+    public int stamina { get; set; }
 
     private string _nickname;
 
     public PokemonInstance(Pokemon _basePokemon)
     {
         this._basePokemon = _basePokemon;
-        this.hp = _basePokemon.maxHP;
-        this.maxHP = _basePokemon.maxHP;
-        this.id = _basePokemon.id;
-        this.type = _basePokemon.type;
-        this.defenseFactor = _basePokemon.defenseMult;
-        this.attackFactor = _basePokemon.attackMult;
-        this.specialAttackFactor = _basePokemon.specialAttackMult;
-        this.specialDefenseFactor = _basePokemon.specialDefenseMult;
-        this.maxStamina = _basePokemon.maxStamina;
-        this.stamina = _basePokemon.maxStamina;
-        this.attack1 = _basePokemon.attack1;
-        this.attack2 = _basePokemon.attack2;
-        this.attack3 = _basePokemon.attack3;
-
-        //_pokemon = atlas.CreateAnimatedSprite(_basePokemon.id);
-    }
-
-    public void Update(GameTime gameTime, InputManager input)
-    {
-        //_pokemon.Update(gameTime);
-    }
-
-    public void Draw(SpriteBatch spriteBatch)
-    {
-        //_pokemon.Draw(spriteBatch, _position);
+        hp = _basePokemon.maxHP;
+        stamina = _basePokemon.maxStamina;
     }
 
     public string getName()
     {
-        if (_nickname != null) return _nickname;
+        if (_nickname != null)
+            return _nickname;
         return _basePokemon.name;
     }
 }

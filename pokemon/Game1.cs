@@ -14,7 +14,8 @@ namespace pokemon;
 
 public class Game1 : Core
 {
-    
+    protected SpriteFont _font;
+
     public Game1()
         : base("Pokemon", 1920, 1080, true, virtualWidth: 256, virtualHeight: 144) { }
 
@@ -22,11 +23,19 @@ public class Game1 : Core
     {
         base.Initialize();
 
-        ChangeScene(new Battle(new PokemonInstance(PokemonRegistry.POKEMONS["leonard"]), new PokemonInstance(PokemonRegistry.POKEMONS["david"])));
+        ChangeScene(
+            new Battle(
+                new PokemonInstance(PokemonRegistry.POKEMONS["leonard"]),
+                new PokemonInstance(PokemonRegistry.POKEMONS["david"]),
+                true
+            )
+        );
     }
 
     protected override void LoadContent()
     {
+        _font = Content.Load<SpriteFont>("fonts/6x8");
+
         base.LoadContent();
     }
 
