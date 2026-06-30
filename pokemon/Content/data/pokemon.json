@@ -6,7 +6,7 @@
             "pokedex": 1,
             "type": "Fire",
             "stats": {
-                "hp": 15,
+                "hp": 30,
                 "attack": 1.1,
                 "defense": 0.9,
                 "special-attack": 1.1,
@@ -20,7 +20,7 @@
             "pokedex": 2,
             "type": "Water",
             "stats": {
-                "hp": 15,
+                "hp": 30,
                 "attack": 1,
                 "defense": 1.1,
                 "special-attack": 1,
@@ -29,8 +29,8 @@
             }
         },
         {
-            "name": "Earthon",
-            "id": "earthon",
+            "name": "Bloomy",
+            "id": "bloomy",
             "pokedex": 3,
             "type": "Plant",
             "stats": {
@@ -48,7 +48,7 @@
             "pokedex": 4,
             "type": "Flying",
             "stats": {
-                "hp": 18,
+                "hp": 25,
                 "attack": 0.8,
                 "defense": 1.3,
                 "special-attack": 0.9,
@@ -62,11 +62,151 @@
             "pokedex": 5,
             "type": "Electric",
             "stats": {
-                "hp": 20,
+                "hp": 30,
                 "attack": 1.2,
                 "defense": 1,
                 "special-attack": 1.1,
                 "special-defense": 0.7,
+                "stamina": 30
+            }
+        },
+        {
+            "name": "Leonard",
+            "id": "leonard",
+            "pokedex": 6,
+            "type": "Normal",
+            "stats": {
+                "hp": 30,
+                "attack": 1,
+                "defense": 1,
+                "special-attack": 1.1,
+                "special-defense": 1,
+                "stamina": 30
+            }
+        },
+        {
+            "name": "Huibuh",
+            "id": "huibuh",
+            "pokedex": 7,
+            "type": "Ghost",
+            "stats": {
+                "hp": 20,
+                "attack": 0.9,
+                "defense": 1.3,
+                "special-attack": 0.8,
+                "special-defense": 1.2,
+                "stamina": 30
+            }
+        },
+        {
+            "name": "Iceman",
+            "id": "iceman",
+            "pokedex": 8,
+            "type": "Ice",
+            "stats": {
+                "hp": 25,
+                "attack": 1.2,
+                "defense": 1,
+                "special-attack": 1.2,
+                "special-defense": 1,
+                "stamina": 30
+            }
+        },
+        {
+            "name": "Lil Slime",
+            "id": "lilslime",
+            "pokedex": 9,
+            "type": "Fighting",
+            "stats": {
+                "hp": 30,
+                "attack": 1.3,
+                "defense": 1.2,
+                "special-attack": 0.8,
+                "special-defense": 0.8,
+                "stamina": 30
+            }
+        },
+        {
+            "name": "Fenty",
+            "id": "fenty",
+            "pokedex": 10,
+            "type": "Poison",
+            "stats": {
+                "hp": 15,
+                "attack": 1.4,
+                "defense": 0.7,
+                "special-attack": 1.2,
+                "special-defense": 0.8,
+                "stamina": 30
+            }
+        },
+        {
+            "name": "Earthon",
+            "id": "earthon",
+            "pokedex": 11,
+            "type": "Ground",
+            "stats": {
+                "hp": 35,
+                "attack": 1.1,
+                "defense": 1,
+                "special-attack": 1.1,
+                "special-defense": 1.1,
+                "stamina": 30
+            }
+        },
+        {
+            "name": "David",
+            "id": "david",
+            "pokedex": 12,
+            "type": "Psycho",
+            "stats": {
+                "hp": 25,
+                "attack": 1,
+                "defense": 1,
+                "special-attack": 1.2,
+                "special-defense": 1,
+                "stamina": 30
+            }
+        },
+        {
+            "name": "Mary",
+            "id": "mary",
+            "pokedex": 13,
+            "type": "Bug",
+            "stats": {
+                "hp": 20,
+                "attack": 1.2,
+                "defense": 0.9,
+                "special-attack": 1.1,
+                "special-defense": 1,
+                "stamina": 30
+            }
+        },
+        {
+            "name": "Dwayne",
+            "id": "dwayne",
+            "pokedex": 14,
+            "type": "Rock",
+            "stats": {
+                "hp": 35,
+                "attack": 1.2,
+                "defense": 0.9,
+                "special-attack": 1.2,
+                "special-defense": 0.7,
+                "stamina": 30
+            }
+        },
+        {
+            "name": "Ignis",
+            "id": "ignis",
+            "pokedex": 15,
+            "type": "Dragon",
+            "stats": {
+                "hp": 100,
+                "attack": 1,
+                "defense": 1,
+                "special-attack": 1,
+                "special-defense": 1,
                 "stamina": 30
             }
         }

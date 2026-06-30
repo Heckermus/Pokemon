@@ -7,30 +7,32 @@ using Microsoft.Xna.Framework.Graphics;
 using MonoGameGum;
 using MonoGameLibrary;
 using pokemon.Data;
+using pokemon.Entity;
 using pokemon.Scenes;
 
 namespace pokemon;
 
 public class Game1 : Core
 {
-    Battle b;
-    
     public Game1()
-        : base("Pokemon", 1280, 720, false, virtualWidth: 256, virtualHeight: 144) { }
+        : base("Pokemon", 1920, 1080, true, virtualWidth: 256, virtualHeight: 144) { }
 
     protected override void Initialize()
     {
         base.Initialize();
 
-        ChangeScene(new GameScene());
-        Console.WriteLine(PokemonRegistry.POKEMONS["flamon"].pokedex);
-
-        //InitializeGum();
+        ChangeScene(
+            new Battle(
+                new PokemonInstance(PokemonRegistry.POKEMONS["leonard"]),
+                new PokemonInstance(PokemonRegistry.POKEMONS["huibuh"]),
+                true
+            )
+        );
+        //ChangeScene(new GameScene());
     }
 
     protected override void LoadContent()
     {
-        b = new Battle()
         base.LoadContent();
     }
 
@@ -39,7 +41,7 @@ public class Game1 : Core
         base.Update(gameTime);
     }
 
-    private void InitializeGum()
+    /*private void InitializeGum()
     {
         // Initialize the Gum service. The second parameter specifies
         // the version of the default visuals to use. V3 is the latest
@@ -72,5 +74,5 @@ public class Game1 : Core
         GumService.Default.CanvasHeight =
             GraphicsDevice.PresentationParameters.BackBufferHeight / 4.0f;
         GumService.Default.Renderer.Camera.Zoom = 4.0f;
-    }
+    }*/
 }

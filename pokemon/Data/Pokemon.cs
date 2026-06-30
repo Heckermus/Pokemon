@@ -4,16 +4,17 @@ public class Pokemon
 {
     public string name { get; }
     public Type type { get; }
-
     public string id { get; }
-    public int pokedex {get;}
+    public int pokedex { get; }
     public int maxHP { get; }
+    public int maxStamina { get; }
+
     public double attackMult { get; }
     public double defenseMult { get; }
     public double specialAttackMult { get; }
     public double specialDefenseMult { get; }
-    public int maxStamina { get; }
-    public Attack attack1 { get; } //FIXME: type specific scheiß auch in pokemon speichern sonst machen wir uns das leben schwer
+
+    public Attack attack1 { get; }
     public Attack attack2 { get; }
     public Attack attack3 { get; }
 

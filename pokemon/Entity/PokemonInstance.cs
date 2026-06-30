@@ -1,46 +1,46 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using MonoGameLibrary.Graphics;
-using MonoGameLibrary.Input;
 using pokemon.Data;
 
 namespace pokemon.Entity;
 
 public class PokemonInstance
 {
-    //private AnimatedSprite _pokemon;
-    private Pokemon _basePokemon;
-    private Vector2 _position;
-
-    private int hp;
-    private int maxHP;
-    private double attackFactor;
-    private double defenseFactor;
-    private double specialAttackFactor;
-    private double specialDefenseFactor;
-    private int stamina;
-
+    public Pokemon _basePokemon { get; }
+    public int hp {get; set;}
+    public int maxHP {get; set;}
+    public double attackFactor {get; set;}
+    public double defenseFactor  {get; set;}
+    public double specialAttackFactor  {get; set;}
+    public double specialDefenseFactor {get; set;}
+    public int maxStamina {get; set;}
+    public int stamina  {get; set;}
+    public Attack attack1  {get; set;}
+    public Attack attack2   {get; set;}
+    public Attack attack3 {get; set;}
     private string _nickname;
 
-    public PokemonInstance(Pokemon _basePokemon, TextureAtlas atlas)
+    public PokemonInstance(Pokemon _basePokemon)
     {
         this._basePokemon = _basePokemon;
+        this.hp = _basePokemon.maxHP;
+        this.maxHP = _basePokemon.maxHP;
+        this.defenseFactor = _basePokemon.defenseMult;
+        this.attackFactor = _basePokemon.attackMult;
+        this.specialAttackFactor = _basePokemon.specialAttackMult;
+        this.specialDefenseFactor = _basePokemon.specialDefenseMult;
+        this.maxStamina = _basePokemon.maxStamina;
+        this.stamina = _basePokemon.maxStamina;
+        this.attack1 = _basePokemon.attack1;
+        this.attack2 = _basePokemon.attack2;
+        this.attack3 = _basePokemon.attack3;
+
         //_pokemon = atlas.CreateAnimatedSprite(_basePokemon.id);
     }
 
-    public void Update(GameTime gameTime, InputManager input)
-    {
-        //_pokemon.Update(gameTime);
-    }
 
-    public void Draw(SpriteBatch spriteBatch)
+    public string getName()
     {
-        //_pokemon.Draw(spriteBatch, _position);
-    }
-
-    public string getNickname()
-    {
-        if (_nickname != null) return _nickname;
+        if (_nickname != null)
+            return _nickname;
         return _basePokemon.name;
     }
 }

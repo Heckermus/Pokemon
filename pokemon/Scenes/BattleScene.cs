@@ -1,23 +1,39 @@
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGameLibrary;
 using MonoGameLibrary.Graphics;
 using MonoGameLibrary.Scenes;
+using pokemon.Data;
 using pokemon.Entity;
 
 namespace pokemon.Scenes;
 
 public class Battle : Scene
 {
-    private PokemonInstance _yourPokemon;
-    private PokemonInstance _opponentsPokemon;
-    private MouseState mouse = Mouse.GetState();
+    private SpriteFont _font;
+    private SpriteFont _fontBold;
+    private Random _random = new Random();
 
-    public Battle(PokemonInstance yourPokemon, PokemonInstance opponentsPokemon)
+    private PokemonInstance _playerPokemon;
+    private PokemonInstance _enemyokemon;
+
+    private PokemonVisual _playerVisual;
+    private PokemonVisual _enemyVisual;
+
+    private bool _playersTurn;
+    private bool _battleOver = false;
+    public string lastMsg { get; set; }
+    public string additionalMsg { get; set; }
+    private double messageTimer = 0;
+    private const double MESSAGE_DURATION = 2.0;
+
+    public Battle(PokemonInstance yourPokemon, PokemonInstance opponentsPokemon, bool playersTurn)
     {
-        this._yourPokemon = yourPokemon;
-        this._opponentsPokemon = opponentsPokemon;
+        _playerPokemon = yourPokemon;
+        _enemyokemon = opponentsPokemon;
+        _playersTurn = playersTurn;
     }
 
     public override void Initialize()
@@ -31,10 +47,64 @@ public class Battle : Scene
     {
         TextureAtlas atlas = TextureAtlas.FromFile(Core.Content, "images/atlas-definition.xml");
 
-        base.LoadContent();
+        _playerVisual = new PokemonVisual(atlas, new Vector2(32, 72));
+        _enemyVisual = new PokemonVisual(atlas, new Vector2(192, 72));
+
+        _font = Content.Load<SpriteFont>("fonts/6x8");
+        _fontBold = Content.Load<SpriteFont>("fonts/8x8");
     }
 
-    public override void Update(GameTime gameTime) { }
+    public override void Update(GameTime gameTime)
+    {
+        messageTimer += gameTime.ElapsedGameTime.TotalSeconds;
+
+        _playerVisual.Update(gameTime);
+        _enemyVisual.Update(gameTime);
+
+        if (_battleOver && messageTimer >= MESSAGE_DURATION * 2)
+        {
+            Core.ChangeScene(new GameScene());
+        }
+        if (!_battleOver)
+        {
+            if (_playersTurn)
+            {
+                if (Core.Input.Keyboard.WasKeyJustPressed(Keys.D1))
+                {
+                    Attack(_playerPokemon, _enemyokemon, _playerPokemon.attack1);
+                    _enemyVisual.TakeDamageVisual();
+                }
+                else if (Core.Input.Keyboard.WasKeyJustPressed(Keys.D2))
+                {
+                    Attack(_playerPokemon, _enemyokemon, _playerPokemon.attack2);
+                    _enemyVisual.TakeDamageVisual();
+                }
+                else if (Core.Input.Keyboard.WasKeyJustPressed(Keys.D3))
+                {
+                    Attack(_playerPokemon, _enemyokemon, _playerPokemon.attack3);
+                    _enemyVisual.TakeDamageVisual();
+                }
+            }
+            else if (!_playersTurn && messageTimer >= MESSAGE_DURATION)
+            {
+                switch (_random.Next(1, 4))
+                {
+                    case 1:
+                        Attack(_enemyokemon, _playerPokemon, _enemyokemon.attack1);
+                        _playerVisual.TakeDamageVisual();
+                        break;
+                    case 2:
+                        Attack(_enemyokemon, _playerPokemon, _enemyokemon.attack2);
+                        _playerVisual.TakeDamageVisual();
+                        break;
+                    case 3:
+                        Attack(_enemyokemon, _playerPokemon, _enemyokemon.attack3);
+                        _playerVisual.TakeDamageVisual();
+                        break;
+                }
+            }
+        }
+    }
 
     public override void Draw(GameTime gameTime)
     {
@@ -45,123 +115,170 @@ public class Battle : Scene
             transformMatrix: Core.ScaleMatrix
         );
 
+        _playerVisual.Draw(Core.SpriteBatch);
+        _enemyVisual.Draw(Core.SpriteBatch);
+
+        Write(_playerPokemon.getName(), 16, 16, bold: true);
+        Write(_playerPokemon.hp + "/" + _playerPokemon.maxHP, 16, 24);
+        Write(_enemyokemon.getName(), 192, 16, bold: true);
+        Write(_enemyokemon.hp + "/" + _enemyokemon.maxHP, 192, 24);
+
+        if (!string.IsNullOrEmpty(lastMsg))
+            Write(lastMsg, 128, 108, false, 0.5f);
+
+        if (_playersTurn)
+        {
+            Write("It's your turn!", 16, 108, bold: true, scale: 0.5f);
+            Write(
+                "Press 1: "
+                    + _playerPokemon.attack1.name
+                    + " dmg: "
+                    + DamageCalc(_playerPokemon, _playerPokemon.attack1),
+                16,
+                117,
+                scale: 0.5f
+            );
+            Write(
+                "Press 2: "
+                    + _playerPokemon.attack2.name
+                    + " dmg: "
+                    + DamageCalc(_playerPokemon, _playerPokemon.attack2),
+                16,
+                126,
+                scale: 0.5f
+            );
+            Write(
+                "Press 3: "
+                    + _playerPokemon.attack3.name
+                    + " dmg: "
+                    + DamageCalc(_playerPokemon, _playerPokemon.attack3),
+                16,
+                135,
+                scale: 0.5f
+            );
+        }
+
         Core.SpriteBatch.End();
     }
 
-    /*private void updateUI(SpriteBatch sb, SpriteFont dg)
+    private int DamageCalc(PokemonInstance attacker, PokemonInstance defender, Attack a)
     {
-        sb.Begin(samplerState: SamplerState.PointClamp);
-        sb.DrawString(
-            dg,
-            _yourPokemon.getName(),
-            new Vector2(100, 700),
-            Color.White,
-            0f,
-            Vector2.Zero,
-            2f,
-            SpriteEffects.None,
-            0f
-        );
-        sb.DrawString(
-            dg,
-            _yourPokemon.hp + "/" + _yourPokemon.maxHP,
-            new Vector2(400, 700),
-            Color.White,
-            0f,
-            Vector2.Zero,
-            2f,
-            SpriteEffects.None,
-            0f
-        );
-        sb.DrawString(
-            dg,
-            _yourPokemon.attack1.name + " dmg:" + _yourPokemon.attack1.damage,
-            new Vector2(100, 800),
-            Color.White,
-            0f,
-            Vector2.Zero,
-            2f,
-            SpriteEffects.None,
-            0f
-        );
-        sb.DrawString(
-            dg,
-            _yourPokemon.attack2.name + " dmg:" + _yourPokemon.attack2.damage,
-            new Vector2(100, 900),
-            Color.White,
-            0f,
-            Vector2.Zero,
-            2f,
-            SpriteEffects.None,
-            0f
-        );
-        sb.DrawString(
-            dg,
-            _yourPokemon.attack3.name + " dmg:" + _yourPokemon.attack3.damage,
-            new Vector2(100, 1000),
-            Color.White,
-            0f,
-            Vector2.Zero,
-            2f,
-            SpriteEffects.None,
-            0f
-        );
+        double damage = a.damage;
 
-        sb.DrawString(
-            dg,
-            _opponentsPokemon.getName(),
-            new Vector2(1500, 80),
-            Color.White,
-            0f,
-            Vector2.Zero,
-            2f,
-            SpriteEffects.None,
-            0f
-        );
-        sb.DrawString(
-            dg,
-            _opponentsPokemon.hp + "/" + _opponentsPokemon.maxHP,
-            new Vector2(1700, 80),
-            Color.White,
-            0f,
-            Vector2.Zero,
-            2f,
-            SpriteEffects.None,
-            0f
-        );
-        sb.DrawString(
-            dg,
-            _opponentsPokemon.attack1.name + " dmg:" + _opponentsPokemon.attack1.damage,
-            new Vector2(1500, 180),
-            Color.White,
-            0f,
-            Vector2.Zero,
-            2f,
-            SpriteEffects.None,
-            0f
-        );
-        sb.DrawString(
-            dg,
-            _opponentsPokemon.attack2.name + " dmg:" + _opponentsPokemon.attack2.damage,
-            new Vector2(1500, 280),
-            Color.White,
-            0f,
-            Vector2.Zero,
-            2f,
-            SpriteEffects.None,
-            0f
-        );
-        sb.DrawString(
-            dg,
-            _opponentsPokemon.attack3.name + " dmg:" + _opponentsPokemon.attack3.damage,
-            new Vector2(1500, 380),
-            Color.White,
-            0f,
-            Vector2.Zero,
-            2f,
-            SpriteEffects.None,
-            0f
-        );
-        sb.End();
-    }*/
+        if (a.special)
+        {
+            damage *= attacker.specialAttackFactor;
+            damage /= defender.specialDefenseFactor;
+        }
+        else if (!a.special)
+        {
+            damage *= attacker.attackFactor;
+            damage /= defender.defenseFactor;
+        }
+        double multiplier = 1.0;
+
+        string attackType = a.type.ToString();
+        string defenderType = defender._basePokemon.type.ToString();
+
+        if (PokemonRegistry.getWeakness(defenderType).Contains(attackType))
+        {
+            multiplier = 2.0;
+            additionalMsg = "Super effective!";
+        }
+        else if (PokemonRegistry.getResistant(defenderType).Contains(attackType))
+        {
+            multiplier = 0.5;
+            additionalMsg = "Not very effective...";
+        }
+        else if (PokemonRegistry.getImmune(defenderType).Contains(attackType))
+        {
+            multiplier = 0.0;
+            additionalMsg = $"It doesn't affect {defender.getName()}";
+        }
+
+        damage *= multiplier;
+
+        additionalMsg += " (" + Math.Round(damage, MidpointRounding.AwayFromZero) + " dmg)";
+
+        return (int)Math.Round(damage, MidpointRounding.AwayFromZero);
+    }
+
+    private int DamageCalc(PokemonInstance attacker, Attack a)
+    {
+        double damage = a.damage;
+
+        if (a.special)
+        {
+            damage *= attacker.specialAttackFactor;
+        }
+        else if (!a.special)
+        {
+            damage *= attacker.attackFactor;
+        }
+
+        return (int)Math.Round(damage, MidpointRounding.AwayFromZero);
+    }
+
+    private void Attack(PokemonInstance attacker, PokemonInstance defender, Attack a)
+    {
+        defender.hp -= DamageCalc(attacker, defender, a);
+        attacker.stamina = attacker.stamina - a.ap;
+
+        SetMessage($"{attacker.getName()} uses {a.name}!");
+
+        if (defender.hp <= 0)
+        {
+            defender.hp = 0;
+            EndBattle(attacker, defender);
+        }
+
+        _playersTurn = !_playersTurn;
+    }
+
+    private void EndBattle(PokemonInstance winner, PokemonInstance loser)
+    {
+        lastMsg = $"{loser.getName()} is dead! {winner.getName()} wins!";
+        _battleOver = true;
+    }
+
+    private void SetMessage(string msg)
+    {
+        lastMsg = msg;
+        if (!string.IsNullOrEmpty(additionalMsg))
+            lastMsg += "\n \n" + additionalMsg;
+        messageTimer = 0;
+        additionalMsg = "";
+    }
+
+    private void Write(string s, int x, int y, bool bold = false, float scale = 1f)
+    {
+        if (!bold)
+        {
+            Core.SpriteBatch.DrawString(
+                _font,
+                s,
+                new Microsoft.Xna.Framework.Vector2(x, y),
+                Color.White,
+                0f,
+                Microsoft.Xna.Framework.Vector2.Zero,
+                scale,
+                SpriteEffects.None,
+                0f
+            );
+        }
+        else
+        {
+            Core.SpriteBatch.DrawString(
+                _fontBold,
+                s,
+                new Microsoft.Xna.Framework.Vector2(x, y),
+                Color.White,
+                0f,
+                Microsoft.Xna.Framework.Vector2.Zero,
+                scale,
+                SpriteEffects.None,
+                0f
+            );
+        }
+    }
 }
