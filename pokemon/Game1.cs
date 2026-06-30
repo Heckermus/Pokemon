@@ -24,7 +24,7 @@ public class Game1 : Core
         ChangeScene(
             new Battle(
                 new PokemonInstance(PokemonRegistry.POKEMONS["leonard"]),
-                new PokemonInstance(PokemonRegistry.POKEMONS["david"]),
+                new PokemonInstance(PokemonRegistry.POKEMONS["huibuh"]),
                 true
             )
         );

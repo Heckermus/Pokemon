@@ -71,17 +71,17 @@ public class Battle : Scene
             {
                 if (Core.Input.Keyboard.WasKeyJustPressed(Keys.D1))
                 {
-                    Attack(_playerPokemon, _enemyokemon, _playerPokemon._basePokemon.attack1);
+                    Attack(_playerPokemon, _enemyokemon, _playerPokemon.attack1);
                     _enemyVisual.TakeDamageVisual();
                 }
                 else if (Core.Input.Keyboard.WasKeyJustPressed(Keys.D2))
                 {
-                    Attack(_playerPokemon, _enemyokemon, _playerPokemon._basePokemon.attack2);
+                    Attack(_playerPokemon, _enemyokemon, _playerPokemon.attack2);
                     _enemyVisual.TakeDamageVisual();
                 }
                 else if (Core.Input.Keyboard.WasKeyJustPressed(Keys.D3))
                 {
-                    Attack(_playerPokemon, _enemyokemon, _playerPokemon._basePokemon.attack3);
+                    Attack(_playerPokemon, _enemyokemon, _playerPokemon.attack3);
                     _enemyVisual.TakeDamageVisual();
                 }
             }
@@ -90,15 +90,15 @@ public class Battle : Scene
                 switch (_random.Next(1, 4))
                 {
                     case 1:
-                        Attack(_enemyokemon, _playerPokemon, _enemyokemon._basePokemon.attack1);
+                        Attack(_enemyokemon, _playerPokemon, _enemyokemon.attack1);
                         _playerVisual.TakeDamageVisual();
                         break;
                     case 2:
-                        Attack(_enemyokemon, _playerPokemon, _enemyokemon._basePokemon.attack2);
+                        Attack(_enemyokemon, _playerPokemon, _enemyokemon.attack2);
                         _playerVisual.TakeDamageVisual();
                         break;
                     case 3:
-                        Attack(_enemyokemon, _playerPokemon, _enemyokemon._basePokemon.attack3);
+                        Attack(_enemyokemon, _playerPokemon, _enemyokemon.attack3);
                         _playerVisual.TakeDamageVisual();
                         break;
                 }
@@ -119,39 +119,39 @@ public class Battle : Scene
         _enemyVisual.Draw(Core.SpriteBatch);
 
         Write(_playerPokemon.getName(), 16, 16, bold: true);
-        Write(_playerPokemon.hp + "/" + _playerPokemon._basePokemon.maxHP, 16, 24);
+        Write(_playerPokemon.hp + "/" + _playerPokemon.maxHP, 16, 24);
         Write(_enemyokemon.getName(), 192, 16, bold: true);
-        Write(_enemyokemon.hp + "/" + _enemyokemon._basePokemon.maxHP, 192, 24);
+        Write(_enemyokemon.hp + "/" + _enemyokemon.maxHP, 192, 24);
 
         if (!string.IsNullOrEmpty(lastMsg))
-            Write(lastMsg, 112, 128);
+            Write(lastMsg, 128, 108, false, 0.5f);
 
         if (_playersTurn)
         {
             Write("It's your turn!", 16, 108, bold: true, scale: 0.5f);
             Write(
                 "Press 1: "
-                    + _playerPokemon._basePokemon.attack1.name
+                    + _playerPokemon.attack1.name
                     + " dmg: "
-                    + DamageCalc(_playerPokemon, _playerPokemon._basePokemon.attack1),
+                    + DamageCalc(_playerPokemon, _playerPokemon.attack1),
                 16,
                 117,
                 scale: 0.5f
             );
             Write(
                 "Press 2: "
-                    + _playerPokemon._basePokemon.attack2.name
+                    + _playerPokemon.attack2.name
                     + " dmg: "
-                    + DamageCalc(_playerPokemon, _playerPokemon._basePokemon.attack2),
+                    + DamageCalc(_playerPokemon, _playerPokemon.attack2),
                 16,
                 126,
                 scale: 0.5f
             );
             Write(
                 "Press 3: "
-                    + _playerPokemon._basePokemon.attack3.name
+                    + _playerPokemon.attack3.name
                     + " dmg: "
-                    + DamageCalc(_playerPokemon, _playerPokemon._basePokemon.attack3),
+                    + DamageCalc(_playerPokemon, _playerPokemon.attack3),
                 16,
                 135,
                 scale: 0.5f
@@ -167,13 +167,13 @@ public class Battle : Scene
 
         if (a.special)
         {
-            damage *= attacker._basePokemon.specialAttackMult;
-            damage /= defender._basePokemon.specialDefenseMult;
+            damage *= attacker.specialAttackFactor;
+            damage /= defender.specialDefenseFactor;
         }
         else if (!a.special)
         {
-            damage *= attacker._basePokemon.attackMult;
-            damage /= defender._basePokemon.defenseMult;
+            damage *= attacker.attackFactor;
+            damage /= defender.defenseFactor;
         }
         double multiplier = 1.0;
 
@@ -209,11 +209,11 @@ public class Battle : Scene
 
         if (a.special)
         {
-            damage *= attacker._basePokemon.specialAttackMult;
+            damage *= attacker.specialAttackFactor;
         }
         else if (!a.special)
         {
-            damage *= attacker._basePokemon.attackMult;
+            damage *= attacker.attackFactor;
         }
 
         return (int)Math.Round(damage, MidpointRounding.AwayFromZero);
