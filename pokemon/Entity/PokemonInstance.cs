@@ -40,7 +40,6 @@ public class PokemonInstance
         //_pokemon = atlas.CreateAnimatedSprite(_basePokemon.id);
     }
 
-
     public string getName()
     {
         if (_nickname != null)

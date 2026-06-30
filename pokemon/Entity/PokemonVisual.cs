@@ -6,13 +6,13 @@ namespace pokemon.Entity;
 
 public class PokemonVisual
 {
-    private Sprite _pokemon;
+    private AnimatedSprite _pokemon;
     private Vector2 _position;
     private double timer;
 
     public PokemonVisual(TextureAtlas atlas, Vector2 pos)
     {
-        _pokemon = atlas.CreateSprite("pokemon");
+        _pokemon = atlas.CreateAnimatedSprite("fent");
         _position = pos;
     }
 
@@ -25,6 +25,7 @@ public class PokemonVisual
             _pokemon.Color = Color.White;
             timer = 0;
         }
+        _pokemon.Update(gameTime);
     }
 
     public void Draw(SpriteBatch spriteBatch)
