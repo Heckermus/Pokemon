@@ -41,7 +41,7 @@ public class Game1 : Core
         base.Update(gameTime);
     }
 
-    private void InitializeGum()
+    /*private void InitializeGum()
     {
         // Initialize the Gum service. The second parameter specifies
         // the version of the default visuals to use. V3 is the latest
@@ -74,5 +74,5 @@ public class Game1 : Core
         GumService.Default.CanvasHeight =
             GraphicsDevice.PresentationParameters.BackBufferHeight / 4.0f;
         GumService.Default.Renderer.Camera.Zoom = 4.0f;
-    }
+    }*/
 }
