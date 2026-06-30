@@ -5,17 +5,17 @@ namespace pokemon.Entity;
 public class PokemonInstance
 {
     public Pokemon _basePokemon { get; }
-    public int hp {get; set;}
-    public int maxHP {get; set;}
-    public double attackFactor {get; set;}
-    public double defenseFactor  {get; set;}
-    public double specialAttackFactor  {get; set;}
-    public double specialDefenseFactor {get; set;}
-    public int maxStamina {get; set;}
-    public int stamina  {get; set;}
-    public Attack attack1  {get; set;}
-    public Attack attack2   {get; set;}
-    public Attack attack3 {get; set;}
+    public int hp { get; set; }
+    public int maxHP { get; set; }
+    public double attackFactor { get; set; }
+    public double defenseFactor { get; set; }
+    public double specialAttackFactor { get; set; }
+    public double specialDefenseFactor { get; set; }
+    public int maxStamina { get; set; }
+    public int stamina { get; set; }
+    public Attack attack1 { get; set; }
+    public Attack attack2 { get; set; }
+    public Attack attack3 { get; set; }
     private string _nickname;
 
     public PokemonInstance(Pokemon _basePokemon)
@@ -35,7 +35,6 @@ public class PokemonInstance
 
         //_pokemon = atlas.CreateAnimatedSprite(_basePokemon.id);
     }
-
 
     public string getName()
     {
