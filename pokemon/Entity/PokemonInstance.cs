@@ -7,6 +7,9 @@ public class PokemonInstance
     public Pokemon _basePokemon { get; }
     public int hp {get; set;}
     public int maxHP {get; set;}
+    public int level {get; set;}
+    public int xp {get; set;}
+    public int maxXP {get; set;}
     public double attackFactor {get; set;}
     public double defenseFactor  {get; set;}
     public double specialAttackFactor  {get; set;}
@@ -21,6 +24,7 @@ public class PokemonInstance
     public PokemonInstance(Pokemon _basePokemon)
     {
         this._basePokemon = _basePokemon;
+        this.level = 1;
         this.hp = _basePokemon.maxHP;
         this.maxHP = _basePokemon.maxHP;
         this.defenseFactor = _basePokemon.defenseMult;

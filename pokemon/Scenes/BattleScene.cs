@@ -17,7 +17,7 @@ public class Battle : Scene
     private Random _random = new Random();
 
     private PokemonInstance _playerPokemon;
-    private PokemonInstance _enemyokemon;
+    private PokemonInstance _oppPokemon;
 
     private PokemonVisual _playerVisual;
     private PokemonVisual _enemyVisual;
@@ -32,7 +32,7 @@ public class Battle : Scene
     public Battle(PokemonInstance yourPokemon, PokemonInstance opponentsPokemon, bool playersTurn)
     {
         _playerPokemon = yourPokemon;
-        _enemyokemon = opponentsPokemon;
+        _oppPokemon = opponentsPokemon;
         _playersTurn = playersTurn;
     }
 
@@ -71,17 +71,17 @@ public class Battle : Scene
             {
                 if (Core.Input.Keyboard.WasKeyJustPressed(Keys.D1))
                 {
-                    Attack(_playerPokemon, _enemyokemon, _playerPokemon.attack1);
+                    Attack(_playerPokemon, _oppPokemon, _playerPokemon.attack1);
                     _enemyVisual.TakeDamageVisual();
                 }
                 else if (Core.Input.Keyboard.WasKeyJustPressed(Keys.D2))
                 {
-                    Attack(_playerPokemon, _enemyokemon, _playerPokemon.attack2);
+                    Attack(_playerPokemon, _oppPokemon, _playerPokemon.attack2);
                     _enemyVisual.TakeDamageVisual();
                 }
                 else if (Core.Input.Keyboard.WasKeyJustPressed(Keys.D3))
                 {
-                    Attack(_playerPokemon, _enemyokemon, _playerPokemon.attack3);
+                    Attack(_playerPokemon, _oppPokemon, _playerPokemon.attack3);
                     _enemyVisual.TakeDamageVisual();
                 }
             }
@@ -90,15 +90,15 @@ public class Battle : Scene
                 switch (_random.Next(1, 4))
                 {
                     case 1:
-                        Attack(_enemyokemon, _playerPokemon, _enemyokemon.attack1);
+                        Attack(_oppPokemon, _playerPokemon, _oppPokemon.attack1);
                         _playerVisual.TakeDamageVisual();
                         break;
                     case 2:
-                        Attack(_enemyokemon, _playerPokemon, _enemyokemon.attack2);
+                        Attack(_oppPokemon, _playerPokemon, _oppPokemon.attack2);
                         _playerVisual.TakeDamageVisual();
                         break;
                     case 3:
-                        Attack(_enemyokemon, _playerPokemon, _enemyokemon.attack3);
+                        Attack(_oppPokemon, _playerPokemon, _oppPokemon.attack3);
                         _playerVisual.TakeDamageVisual();
                         break;
                 }
@@ -119,9 +119,9 @@ public class Battle : Scene
         _enemyVisual.Draw(Core.SpriteBatch);
 
         Write(_playerPokemon.getName(), 16, 16, bold: true);
-        Write(_playerPokemon.hp + "/" + _playerPokemon.maxHP, 16, 24);
-        Write(_enemyokemon.getName(), 192, 16, bold: true);
-        Write(_enemyokemon.hp + "/" + _enemyokemon.maxHP, 192, 24);
+        Write($"lvl {_playerPokemon.level} " + _playerPokemon.hp + "/" + _playerPokemon.maxHP, 16, 24, false, .5f);
+        Write(_oppPokemon.getName(), 176, 16, bold: true);
+        Write($"lvl {_oppPokemon.level} " + _oppPokemon.hp + "/" + _oppPokemon.maxHP, 176, 24, false, .5f);
 
         if (!string.IsNullOrEmpty(lastMsg))
             Write(lastMsg, 128, 108, false, 0.5f);
